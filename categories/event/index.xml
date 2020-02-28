@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>event on Who am I</title>
-    <link>http://10.0.0.2:1313/categories/event/</link>
+    <link>http://blog.hxsf.me/categories/event/</link>
     <description>Recent content in event on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 30 Jan 2015 21:38:00 +0000</lastBuildDate>
     
-	<atom:link href="http://10.0.0.2:1313/categories/event/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.hxsf.me/categories/event/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>事件绑定和事件委托 (以 jQuery 为例)</title>
-      <link>http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</link>
+      <link>http://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</link>
       <pubDate>Fri, 30 Jan 2015 21:38:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</guid>
+      <guid>http://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</guid>
       <description>随着DOM结构的复杂化和Ajax等动态脚本技术的运用，事件委托自然浮出了水面。jQuery为绑定和委托事件提供了 .bind() 、.live() 和 .delegate() 方法。本文在讨论这几个方法内部实现的基础上，展示它们的优劣势及适用</description>
     </item>
     

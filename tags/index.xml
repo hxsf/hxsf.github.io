@@ -2,282 +2,282 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Who am I</title>
-    <link>http://10.0.0.2:1313/tags/</link>
+    <link>http://blog.hxsf.me/tags/</link>
     <description>Recent content in Tags on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Mar 2018 19:28:50 +0000</lastBuildDate>
     
-	<atom:link href="http://10.0.0.2:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.hxsf.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ssl</title>
-      <link>http://10.0.0.2:1313/tags/ssl/</link>
+      <link>http://blog.hxsf.me/tags/ssl/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/ssl/</guid>
+      <guid>http://blog.hxsf.me/tags/ssl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>安全</title>
-      <link>http://10.0.0.2:1313/tags/%E5%AE%89%E5%85%A8/</link>
+      <link>http://blog.hxsf.me/tags/%E5%AE%89%E5%85%A8/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://blog.hxsf.me/tags/%E5%AE%89%E5%85%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>部署</title>
-      <link>http://10.0.0.2:1313/tags/%E9%83%A8%E7%BD%B2/</link>
+      <link>http://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E9%83%A8%E7%BD%B2/</guid>
+      <guid>http://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://10.0.0.2:1313/tags/Javascript/</link>
+      <link>http://blog.hxsf.me/tags/Javascript/</link>
       <pubDate>Tue, 11 Oct 2016 02:11:16 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/Javascript/</guid>
+      <guid>http://blog.hxsf.me/tags/Javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>js</title>
-      <link>http://10.0.0.2:1313/tags/js/</link>
+      <link>http://blog.hxsf.me/tags/js/</link>
       <pubDate>Tue, 11 Oct 2016 02:11:16 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/js/</guid>
+      <guid>http://blog.hxsf.me/tags/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tools</title>
-      <link>http://10.0.0.2:1313/tags/tools/</link>
+      <link>http://blog.hxsf.me/tags/tools/</link>
       <pubDate>Tue, 11 Oct 2016 02:11:16 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/tools/</guid>
+      <guid>http://blog.hxsf.me/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>编程</title>
-      <link>http://10.0.0.2:1313/tags/%E7%BC%96%E7%A8%8B/</link>
+      <link>http://blog.hxsf.me/tags/%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Tue, 11 Oct 2016 02:11:16 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E7%BC%96%E7%A8%8B/</guid>
+      <guid>http://blog.hxsf.me/tags/%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>经验</title>
-      <link>http://10.0.0.2:1313/tags/%E7%BB%8F%E9%AA%8C/</link>
+      <link>http://blog.hxsf.me/tags/%E7%BB%8F%E9%AA%8C/</link>
       <pubDate>Sat, 10 Sep 2016 05:33:06 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E7%BB%8F%E9%AA%8C/</guid>
+      <guid>http://blog.hxsf.me/tags/%E7%BB%8F%E9%AA%8C/</guid>
       <description></description>
     </item>
     
     <item>
       <title>随感</title>
-      <link>http://10.0.0.2:1313/tags/%E9%9A%8F%E6%84%9F/</link>
+      <link>http://blog.hxsf.me/tags/%E9%9A%8F%E6%84%9F/</link>
       <pubDate>Sat, 10 Sep 2016 05:33:06 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E9%9A%8F%E6%84%9F/</guid>
+      <guid>http://blog.hxsf.me/tags/%E9%9A%8F%E6%84%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>数据</title>
-      <link>http://10.0.0.2:1313/tags/%E6%95%B0%E6%8D%AE/</link>
+      <link>http://blog.hxsf.me/tags/%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Sun, 28 Aug 2016 01:45:10 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E6%95%B0%E6%8D%AE/</guid>
+      <guid>http://blog.hxsf.me/tags/%E6%95%B0%E6%8D%AE/</guid>
       <description></description>
     </item>
     
     <item>
       <title>磁盘</title>
-      <link>http://10.0.0.2:1313/tags/%E7%A3%81%E7%9B%98/</link>
+      <link>http://blog.hxsf.me/tags/%E7%A3%81%E7%9B%98/</link>
       <pubDate>Sun, 28 Aug 2016 01:45:10 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E7%A3%81%E7%9B%98/</guid>
+      <guid>http://blog.hxsf.me/tags/%E7%A3%81%E7%9B%98/</guid>
       <description></description>
     </item>
     
     <item>
       <title>计算机原理</title>
-      <link>http://10.0.0.2:1313/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
+      <link>http://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 28 Aug 2016 01:45:10 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>bing</title>
-      <link>http://10.0.0.2:1313/tags/bing/</link>
+      <link>http://blog.hxsf.me/tags/bing/</link>
       <pubDate>Mon, 09 May 2016 22:40:42 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/bing/</guid>
+      <guid>http://blog.hxsf.me/tags/bing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>http://10.0.0.2:1313/tags/python/</link>
+      <link>http://blog.hxsf.me/tags/python/</link>
       <pubDate>Mon, 09 May 2016 22:40:42 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/python/</guid>
+      <guid>http://blog.hxsf.me/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>wallpaper</title>
-      <link>http://10.0.0.2:1313/tags/wallpaper/</link>
+      <link>http://blog.hxsf.me/tags/wallpaper/</link>
       <pubDate>Mon, 09 May 2016 22:40:42 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/wallpaper/</guid>
+      <guid>http://blog.hxsf.me/tags/wallpaper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>centos</title>
-      <link>http://10.0.0.2:1313/tags/centos/</link>
+      <link>http://blog.hxsf.me/tags/centos/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/centos/</guid>
+      <guid>http://blog.hxsf.me/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dns</title>
-      <link>http://10.0.0.2:1313/tags/dns/</link>
+      <link>http://blog.hxsf.me/tags/dns/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/dns/</guid>
+      <guid>http://blog.hxsf.me/tags/dns/</guid>
       <description></description>
     </item>
     
     <item>
       <title>firewall</title>
-      <link>http://10.0.0.2:1313/tags/firewall/</link>
+      <link>http://blog.hxsf.me/tags/firewall/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/firewall/</guid>
+      <guid>http://blog.hxsf.me/tags/firewall/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://10.0.0.2:1313/tags/linux/</link>
+      <link>http://blog.hxsf.me/tags/linux/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/linux/</guid>
+      <guid>http://blog.hxsf.me/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>named</title>
-      <link>http://10.0.0.2:1313/tags/named/</link>
+      <link>http://blog.hxsf.me/tags/named/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/named/</guid>
+      <guid>http://blog.hxsf.me/tags/named/</guid>
       <description></description>
     </item>
     
     <item>
       <title>操作系统</title>
-      <link>http://10.0.0.2:1313/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+      <link>http://blog.hxsf.me/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sat, 10 Oct 2015 21:46:38 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>http://blog.hxsf.me/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>思想</title>
-      <link>http://10.0.0.2:1313/tags/%E6%80%9D%E6%83%B3/</link>
+      <link>http://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/</link>
       <pubDate>Sat, 10 Oct 2015 18:30:22 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/%E6%80%9D%E6%83%B3/</guid>
+      <guid>http://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>http://10.0.0.2:1313/tags/blog/</link>
+      <link>http://blog.hxsf.me/tags/blog/</link>
       <pubDate>Wed, 07 Oct 2015 02:53:41 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/blog/</guid>
+      <guid>http://blog.hxsf.me/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dev</title>
-      <link>http://10.0.0.2:1313/tags/dev/</link>
+      <link>http://blog.hxsf.me/tags/dev/</link>
       <pubDate>Sun, 20 Sep 2015 08:31:35 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/dev/</guid>
+      <guid>http://blog.hxsf.me/tags/dev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>node</title>
-      <link>http://10.0.0.2:1313/tags/node/</link>
+      <link>http://blog.hxsf.me/tags/node/</link>
       <pubDate>Sun, 20 Sep 2015 08:31:35 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/node/</guid>
+      <guid>http://blog.hxsf.me/tags/node/</guid>
       <description></description>
     </item>
     
     <item>
       <title>build</title>
-      <link>http://10.0.0.2:1313/tags/build/</link>
+      <link>http://blog.hxsf.me/tags/build/</link>
       <pubDate>Thu, 19 Mar 2015 04:50:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/build/</guid>
+      <guid>http://blog.hxsf.me/tags/build/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gitlab</title>
-      <link>http://10.0.0.2:1313/tags/gitlab/</link>
+      <link>http://blog.hxsf.me/tags/gitlab/</link>
       <pubDate>Thu, 19 Feb 2015 04:19:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/gitlab/</guid>
+      <guid>http://blog.hxsf.me/tags/gitlab/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>http://10.0.0.2:1313/tags/php/</link>
+      <link>http://blog.hxsf.me/tags/php/</link>
       <pubDate>Thu, 12 Feb 2015 05:09:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/php/</guid>
+      <guid>http://blog.hxsf.me/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>event</title>
-      <link>http://10.0.0.2:1313/tags/event/</link>
+      <link>http://blog.hxsf.me/tags/event/</link>
       <pubDate>Fri, 30 Jan 2015 21:38:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/event/</guid>
+      <guid>http://blog.hxsf.me/tags/event/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C/C&#43;&#43;</title>
-      <link>http://10.0.0.2:1313/tags/C/C&#43;&#43;/</link>
+      <link>http://blog.hxsf.me/tags/C/C&#43;&#43;/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/tags/C/C&#43;&#43;/</guid>
+      <guid>http://blog.hxsf.me/tags/C/C&#43;&#43;/</guid>
       <description></description>
     </item>
     

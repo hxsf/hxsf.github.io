@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>操作系统 on Who am I</title>
-    <link>http://10.0.0.2:1313/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <link>http://blog.hxsf.me/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
     <description>Recent content in 操作系统 on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 10 Oct 2015 21:46:38 +0000</lastBuildDate>
     
-	<atom:link href="http://10.0.0.2:1313/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.hxsf.me/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux内核与GNU/Linux发行版</title>
-      <link>http://10.0.0.2:1313/post/linux-kernel-and-linux-distribution/</link>
+      <link>http://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</link>
       <pubDate>Sat, 10 Oct 2015 21:46:38 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/linux-kernel-and-linux-distribution/</guid>
+      <guid>http://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</guid>
       <description>Linux内核与GNU/Linux发行版 ##名词释义 Linux内核 Linux内核（英语：Linux kernel），使用于类Unix操作系统，Linux家族的操作系统内核，以C语言写成，符合POSIX标</description>
     </item>
     

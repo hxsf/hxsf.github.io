@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>安全 on Who am I</title>
-    <link>http://10.0.0.2:1313/categories/%E5%AE%89%E5%85%A8/</link>
+    <link>http://blog.hxsf.me/categories/%E5%AE%89%E5%85%A8/</link>
     <description>Recent content in 安全 on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Mar 2018 19:28:50 +0000</lastBuildDate>
     
-	<atom:link href="http://10.0.0.2:1313/categories/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.hxsf.me/categories/%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Let&#39;s Encrypt Wildcard 部署</title>
-      <link>http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/</link>
+      <link>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/</guid>
+      <guid>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</guid>
       <description>2018-03-14 Let&amp;rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。 我们使用 acme.sh 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。 安装 acme.sh 的过程其官网写的很详细，略过</description>
     </item>
     
     <item>
       <title>记一次反诈骗</title>
-      <link>http://10.0.0.2:1313/post/thing-about-anti-invasion/</link>
+      <link>http://blog.hxsf.me/post/thing-about-anti-invasion/</link>
       <pubDate>Sat, 10 Sep 2016 05:33:06 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/thing-about-anti-invasion/</guid>
+      <guid>http://blog.hxsf.me/post/thing-about-anti-invasion/</guid>
       <description>2016-09-10 21:00 家父收到陌生号码的短信，大致内容如下： X(姓氏)家长，你好，为了不使家长错过学校的通知，请及时下载校园网 http://IP/path 逾期自负。 由于该短信破绽百出，家父没有第一时间下载，与我取得联系。 疑点 已外出实习，并不在学</description>
     </item>
     
     <item>
       <title>自建DNS ——记一次注定坑爹的排错</title>
-      <link>http://10.0.0.2:1313/post/create-dns-server/</link>
+      <link>http://blog.hxsf.me/post/create-dns-server/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/create-dns-server/</guid>
+      <guid>http://blog.hxsf.me/post/create-dns-server/</guid>
       <description>背景： 服务一直用Ubuntu Server(deb包管理) 个人使用OS X 起因 因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。 心血来</description>
     </item>
     
     <item>
       <title>比 XcodeGhost 更邪恶的手段 30 年前就出现了</title>
-      <link>http://10.0.0.2:1313/post/the-root-password-of-all-evil/</link>
+      <link>http://blog.hxsf.me/post/the-root-password-of-all-evil/</link>
       <pubDate>Sat, 10 Oct 2015 18:18:23 +0000</pubDate>
       
-      <guid>http://10.0.0.2:1313/post/the-root-password-of-all-evil/</guid>
+      <guid>http://blog.hxsf.me/post/the-root-password-of-all-evil/</guid>
       <description>最近在开发者圈里讨论最多的莫过于 XcodeGhost。其实在 20 年前，更高明的手段就出现了。 1984 年的时候，UNIX 创造者之一 Ken Thompson 获得了 ACM 图灵奖。他的获奖演讲叫做 Reflections on Trusting Trust（反思对信任的信任）。演讲全</description>
     </item>
     
