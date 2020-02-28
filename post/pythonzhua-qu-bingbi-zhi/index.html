@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>python抓取bing壁纸 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/python">python</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">python抓取bing壁纸</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2016-105-05">9 May 2016</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 2 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="python抓取bing壁纸" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>bing背景图很不错,一直用别人的bing壁纸获取软件(大部分C#写的)，
+但是那些都或多或少不符合自己期望，不是会自动改桌面壁纸就是需要常驻后台，或者保存数量有上限。
+然后想用python练个手。
+看源码，有 <code>g_img={url:</code> 后面的url就是图片地址，点击右下角的上一页下一页可以换图片。
+FF中的FireBug没找出具体路径，那就HttpFox来抓个包吧。</p>
+<p>get it！有一串json加载进了一张jpeg和相关信息
+<code>http://cn.bing.com/HPImageArchive.aspx?format=js&amp;amp;idx=0&amp;amp;n=1&amp;amp;nc=1361089515117&amp;amp;FORM=HYLH1</code>
+返回的是一个json,格式化后如下</p>
+<pre><code>{
+     images : [
+        {
+             startdate :  20150402 ,
+             fullstartdate :  201504021600 ,
+             enddate :  20150403 ,
+             url :  http://s.cn.bing.net/az/hprichbg/rb/FranzJosef_ZH-CN6046406720_1920x1080.jpg ,
+             urlbase :  /az/hprichbg/rb/FranzJosef_ZH-CN6046406720 ,
+             copyright :  新西兰弗兰兹·约瑟夫冰河的徒步旅行者 (© Keri Oberly/Aurora Photos) ,
+             copyrightlink :  http://www.bing.com/search?q=%E5%BC%97%E5%85%B0%E5%85%B9%C2%B7%E7%BA%A6%E7%91%9F%E5%A4%AB%E5%86%B0%E6%B2%B3&amp;amp;form=hpcapt&amp;amp;mkt=zh-cn ,
+             wp : true,
+             hsh :  7f487ef404037a5dda101b4febf83362 ,
+             drk : 1,
+             top : 1,
+             bot : 1,
+             hs : [
+                {
+                     desc :  它由大块的冰和雪块组成的，绵延12.1公里， ,
+                     link :  http://www.bing.com/search?q=%E5%BC%97%E5%85%B0%E5%85%B9%C2%B7%E7%BA%A6%E7%91%9F%E5%A4%AB%E5%86%B0%E6%B2%B3&amp;amp;form=hphot1&amp;amp;mkt=zh-cn ,
+                     query :  它是弗兰兹·约瑟夫冰河。 ,
+                     locx : 21,
+                     locy : 39
+                },
+                {
+                     desc :  看过它的长相，你可能会猜想，会不会是某人不小心， ,
+                     link :  http://www.bing.com/images/search?q=Franz+Josef+Glacier+in+New+Zealand&amp;amp;form=hphot2&amp;amp;mkt=zh-cn ,
+                     query :  而将这个冰河掉落在两座山之间？ ,
+                     locx : 34,
+                     locy : 49
+                },
+                {
+                     desc :  在这，不要让你的背包或者车辆处于无人看守的情况…… ,
+                     link :  http://www.bing.com/videos/search?q=%E5%95%84%E7%BE%8A%E9%B9%A6%E9%B9%89&amp;amp;form=hphot3&amp;amp;mkt=zh-cn ,
+                     query :  聪明又狡猾的鸟儿正在旁盯着呢！ ,
+                     locx : 55,
+                     locy : 38
+                }
+            ],
+             msg : [
+                {
+                     title :  今日图片故事 ,
+                     link :  http://www.bing.com/search?q=%E5%BC%97%E5%85%B0%E5%85%B9%C2%B7%E7%BA%A6%E7%91%9F%E5%A4%AB%E5%86%B0%E6%B2%B3&amp;amp;form=pgbar1&amp;amp;mkt=zh-cn ,
+                     text :  弗兰兹·约瑟夫冰河，旅行者
+                }
+            ]
+        }
+    ],
+     tooltips : {
+         loading :  正在加载... ,
+         previous :  上一页 ,
+         next :  下一页 ,
+         walle :  此图片不能下载用作壁纸。 ,
+         walls :  下载今日美图。仅限用作桌面壁纸。
+    }
+}
+</code></pre><p>知道API之后就好办了，话不多说，直接上代码</p>
+<pre><code>#!/usr/bin/python3
+# -*- coding:utf-8 -*-
+# python3抓取bing主页所有背景图片
+import urllib.request,re,sys,os,getopt,json
+def get_bing_backphoto(index, path='bing_photos/'):
+	url = 'http://cn.bing.com/HPImageArchive.aspx?format=js&amp;amp;idx='+str(index)+'&amp;amp;n=1&amp;amp;nc=1361089515117&amp;amp;FORM=HYLH1'
+	html = urllib.request.urlopen(url).read()
+	if html == 'null':
+		print( 'open &amp;amp; read bing error!')
+		sys.exit(-1)
+	html = html.decode('utf-8')
+	s = json.loads(html)
+	if s!=None:
+		date = s[ images ][0][ enddate ]
+		imgurl = s[ images ][0][ url ]
+		right = imgurl.rindex('/')
+		name = imgurl.replace(imgurl[:right+1],'')
+		savepath = path + date + '_' + name
+		urllib.request.urlretrieve(imgurl, savepath)
+		print (date + '_' + name + ' save success!')
+def get_bing_all(num, savepath='photos/'):
+	if (os.path.exists(savepath)== False):
+		os.mkdir(savepath)
+	for i in range(0,int(num)):
+		get_bing_backphoto(i, savepath)
+def usage():
+	print( \n\tuse command like this:\n\t\t./bing.py [-n num] [-f savepath] )
+	print( \n\tExample:\n\t\t./bing.py -n 17 -f bing_photos/ )
+	print( \t参数:\n\t\tn\t获取最前n天的壁纸,默认为1(当天),由于bing网站只保留十几天的壁纸,最大取20 )
+	print( \t\tf\t存放目录,支持相对路径和绝对路径,请以'/'结尾 )
+opts, args = getopt.getopt(sys.argv[1:],  hn:f: )
+num= 1
+output_folder= bing_photos/
+for op, value in opts:
+	if op ==  -n :
+		num = value if (int(value)&amp;lt;20) else '20'
+	elif op ==  -f :
+		output_folder = value if (value[-1]=='/') else (value + '/')
+	elif op ==  -h :
+		usage()
+		sys.exit()
+get_bing_all(num, output_folder)
+</code></pre>
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/python">python</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/pythonzhua-qu-bingbi-zhi/">python抓取bing壁纸</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-105-05">05 May 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/create-dns-server/" style="background-image: url(https://static.hxsf.me/image/d/67/bc9a0427e88c8a50c2af28daa1ac2.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/d/67/bc9a0427e88c8a50c2af28daa1ac2.png-webp" alt="自建DNS ——记一次注定坑爹的排错"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/create-dns-server/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">自建DNS ——记一次注定坑爹的排错</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>背景： 服务一直用Ubuntu Server(deb包管理) 个人使用OS X 起因 因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。 心血来</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E7%BB%8F%E9%AA%8C">经验</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/linux">linux</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E5%AE%89%E5%85%A8">安全</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/dns">dns</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/named">named</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/centos">centos</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/firewall">firewall</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2016-52-02">19 February 2016</time>
+                        <span class="bull">&bull;</span> 2 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/how-disk-store-data/" style="background-image: url(https://static.hxsf.me/image/e/fd/9fb3da2f70aa2c0e342ddc024d2f0.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/e/fd/9fb3da2f70aa2c0e342ddc024d2f0.png-webp" alt="为何删除的文件可以恢复"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/how-disk-store-data/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">为何删除的文件可以恢复</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>写给不知道的人。 数据是怎么存到我们硬盘上的 文件存储方式 下面介绍下常见的文件存储方式： FAT 和 NTFS。 FAT FAT 把分区卷(Volume)规划为如下几部分 主引导区 —— 文件 分配表#1 —— 文件 分配表#2 —— 根目录 剩下</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86">计算机原理</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E6%95%B0%E6%8D%AE">数据</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E7%A3%81%E7%9B%98">磁盘</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2016-18-08">28 August 2016</time>
+                        <span class="bull">&bull;</span> 2 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2016</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

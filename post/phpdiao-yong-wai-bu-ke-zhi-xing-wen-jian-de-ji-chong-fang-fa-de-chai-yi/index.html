@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>PHP调用外部可执行文件的几种方法的差异 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/php">php</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">PHP调用外部可执行文件的几种方法的差异</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2015-52-02">12 February 2015</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 3 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="PHP调用外部可执行文件的几种方法的差异" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>PHP 要调用 Shell 执行程式的时候, 偷懒有 <code>ls</code> 可以使用, 不过, 正规点可以使用 system()、exec()、shell_exec()、passthru()这四个 Function 来操作。</p>
+<p>当然php官方文档中对执行程序有以下的方法可以使用:</p>
+<ul>
+<li><a href="http://php.net/manual/zh/function.escapeshellarg.php">escapeshellarg</a> — 把字符串转码为可以在 shell 命令里使用的参数</li>
+<li><a href="http://php.net/manual/zh/function.escapeshellcmd.php">escapeshellcmd</a> — shell 元字符转义</li>
+<li><a href="http://php.net/manual/zh/function.exec.php">exec</a> — 执行一个外部程序</li>
+<li><a href="http://php.net/manual/zh/function.passthru.php">passthru</a> — 执行外部程序并且显示原始输出</li>
+<li><a href="http://php.net/manual/zh/function.proc-close.php">proc_close</a> — 关闭由 proc_open 打开的进程并且返回进程退出码</li>
+<li><a href="http://php.net/manual/zh/function.proc-get-status.php">proc_get_status</a> — 获取由 proc_open 函数打开的进程的信息</li>
+<li><a href="http://php.net/manual/zh/function.proc-nice.php">proc_nice</a> — 修改当前进程的优先级</li>
+<li><a href="http://php.net/manual/zh/function.proc-open.php">proc_open</a> — 执行一个命令，并且打开用来输入/输出的文件指针。</li>
+<li><a href="http://php.net/manual/zh/function.proc-terminate.php">proc_terminate</a> — 杀除由 proc_open 打开的进程</li>
+<li><a href="http://php.net/manual/zh/function.shell-exec.php">shell_exec</a> — 通过 shell 环境执行命令，并且将完整的输出以字符串的方式返回。</li>
+<li><a href="http://php.net/manual/zh/function.system.php">system</a> — 执行外部程序，并且显示输出
+不过本文主要讨论这四个。</li>
+</ul>
+<p>那 ``、system()、exec()、shell_exec()、passthru()这四个 Function 使用上有何差异呢?</p>
+<h2 id="官方文件说明如下">官方文件说明如下:</h2>
+<h3 id="1-执行运算符反引号">1. 执行运算符：反引号（``）</h3>
+<p>PHP 支持一个执行运算符：反引号（``）。注意这不是单引号！PHP 将尝试将反引号中的内容作为外壳命令来执行，并将其输出信息返回（即，可以赋给一个变量而不是简单地丢弃到标准输出）。使用反引号运算符“`”的效果与函数 shell_exec() 相同。</p>
+<pre><code>$output = `ls -al`;
+echo &quot;$output&quot;;
+</code></pre><h3 id="2system--执行外部程序并且显示输出">2.system — 执行外部程序，并且显示输出</h3>
+<pre><code>string system ( string $command [, int &amp;$return_var ] )
+</code></pre><p>同 C 版本的 system() 函数一样， 本函数执行 command 参数所指定的命令， 并且输出执行结果。
+如果 PHP 运行在服务器模块中， system() 函数还会尝试在每行输出完毕之后， 自动刷新 web 服务器的输出缓存。
+如果要获取一个命令未经任何处理的 原始输出， 请使用 passthru() 函数。</p>
+<h4 id="参数">参数</h4>
+<p>command
+要执行的命令。</p>
+<p>return_var
+如果提供 return_var 参数， 则外部命令执行后的返回状态将会被设置到此变量中。</p>
+<h3 id="3exec--执行一个外部程序">3.exec — 执行一个外部程序</h3>
+<pre><code>string exec ( string $command [, array &amp;$output [, int &amp;$return_var ]] )
+</code></pre><p>exec() 执行 command 参数所指定的命令。</p>
+<h4 id="参数-1">参数</h4>
+<p>command
+要执行的命令。</p>
+<p>output
+如果提供了 output 参数， 那么会用命令执行的输出填充此数组， 每行输出填充数组中的一个元素。 数组中的数据不包含行尾的空白字符，例如 \n 字符。 请注意，如果数组中已经包含了部分元素，exec() 函数会在数组末尾追加内容。如果你不想在数组末尾进行追加， 请在传入 exec() 函数之前 对数组使用 unset() 函数进行重置。</p>
+<p>return_var
+如果同时提供 output 和 return_var 参数， 命令执行后的返回状态会被写入到此变量。</p>
+<h3 id="4shell_exec--通过-shell-环境执行命令并且将完整的输出以字符串的方式返回">4.shell_exec — 通过 shell 环境执行命令，并且将完整的输出以字符串的方式返回。</h3>
+<pre><code>string shell_exec ( string $cmd )
+</code></pre><h4 id="参数-2">参数</h4>
+<p>cmd - 要执行的命令。</p>
+<h4 id="返回值">返回值</h4>
+<p>命令执行的输出。 如果执行过程中发生错误或者进程不产生输出，则返回 NULL。</p>
+<h3 id="5passthru--执行外部程序并且显示原始输出">5.passthru — 执行外部程序并且显示原始输出</h3>
+<pre><code>void passthru ( string $command [, int &amp;$return_var ] )
+</code></pre><p>同 exec() 函数类似， passthru() 函数 也是用来执行外部命令（command）的。 当所执行的 Unix 命令输出二进制数据， 并且需要直接传送到浏览器的时候， 需要用此函数来替代 exec() 或 system() 函数。 常用来执行诸如 pbmplus 之类的可以直接输出图像流的命令。 通过设置 Content-type 为 image/gif， 然后调用 pbmplus 程序输出 gif 文件， 就可以从 PHP 脚本中直接输出图像到浏览器。</p>
+<h4 id="参数-3">参数</h4>
+<p>command
+要执行的命令。</p>
+<p>return_var
+如果提供 return_var 参数， Unix 命令的返回状态会被记录到此参数。</p>
+<!-- raw HTML omitted -->
+<p>一般系统会有两种输出, 一种是系统状态(return code), 一种是输出文字(output string), 这三个 Function 主要就是这些回传的差异.</p>
+<pre><code>system()
+$last_line = system('ls', $return_var);
+//system() 会将输出内容直接印出, 所以若于网页, 会将所有回传内容都显示于页面上.
+//$last_line: 只能取得最后一行的内容
+//$return_var: 取得系统状态回传码
+//exec()
+exec('ls', $output, $return_var);
+//$output: 回传内容都会存于此变数中(储存成阵列), 不会直接秀在页面上.
+//$return_var: 取得系统状态回传码
+//shell_exec()
+$output = shell_exec('ls');
+//$output: 回传内容都会存于此变数中(储存成纯文字内容), 不会直接秀在页面上.
+</code></pre><p>范例程式</p>
+<p>由此范例执行一次就比较容易理解. (请建立一个目录, 随便放两个档案, 再将此程式放置执行)</p>
+<pre><code>&lt;?php
+echo &quot;\nsystem&quot;;
+$last_line = system('ls', $return_var);
+echo &quot;\nreturn_var:&quot;;
+print_r($return_var);
+echo &quot;\nlast_line:&quot;;
+print_r($last_line);
+
+echo &quot;\n\nexec&quot;;
+exec('ls', $output, $return_var);
+echo &quot;\nreturn_var:&quot;;
+print_r($return_var);
+echo &quot;\noutput:&quot;;
+print_r($output);
+
+echo &quot;\n\nshell_exec&quot;;
+$output = shell_exec('ls');
+echo &quot;\noutput:&quot;;
+print_r($output);
+?&gt;
+</code></pre>
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/php">php</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/">PHP调用外部可执行文件的几种方法的差异</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-52-02">02 Feb 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/" style="background-image: url(https://static.hxsf.me/image/5/31/132bbaee4c63df0aab95df205c2a5.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/5/31/132bbaee4c63df0aab95df205c2a5.png-webp" alt="事件绑定和事件委托 (以 jQuery 为例)"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">事件绑定和事件委托 (以 jQuery 为例)</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>随着DOM结构的复杂化和Ajax等动态脚本技术的运用，事件委托自然浮出了水面。jQuery为绑定和委托事件提供了 .bind() 、.live() 和 .delegate() 方法。本文在讨论这几个方法内部实现的基础上，展示它们的优劣势及适用</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/Javascript">Javascript</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/js">js</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/event">event</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-91-01">30 January 2015</time>
+                        <span class="bull">&bull;</span> 7 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/" style="background-image: url(https://static.hxsf.me/image/b/85/15479f84b6b0e6cbb7b20bdd6fe33.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/b/85/15479f84b6b0e6cbb7b20bdd6fe33.jpg-webp" alt="安装并配置GitLab手记"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">安装并配置GitLab手记</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>照着官方的下载页面 https://about.gitlab.com/downloads/ 1-2步安装好GitLab 7.7.2 ，第三步里写的内容是使用一键配置来初始化GitLab 如果单纯的裸机(没有安装任何的服务器数据库之类的||防止端口占用)里只想安装GitLab那么没有任何</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E9%83%A8%E7%BD%B2">部署</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/gitlab">gitlab</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-42-02">19 February 2015</time>
+                        <span class="bull">&bull;</span> 2 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2015</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

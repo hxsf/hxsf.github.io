@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>自建DNS ——记一次注定坑爹的排错 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/%E7%BB%8F%E9%AA%8C">经验</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">自建DNS ——记一次注定坑爹的排错</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2016-52-02">19 February 2016</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 2 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="自建DNS ——记一次注定坑爹的排错" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <h2 id="背景">背景：</h2>
+<ul>
+<li>服务一直用Ubuntu Server(deb包管理)</li>
+<li>个人使用OS X</li>
+</ul>
+<h2 id="起因">起因</h2>
+<p>因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。</p>
+<p>心血来潮想试试rpm包管理系的Linux。然后选定了Centos，版本选了最新版7。悲剧也是由此引起。</p>
+<h2 id="过程">过程</h2>
+<ol>
+<li>
+<p>换国内源。身在天朝，你懂的。</p>
+</li>
+<li>
+<p>安装bind。<a href="http://www.isc.org/downloads/bind/">详细介绍</a>(国外)</p>
+</li>
+<li>
+<p>配置bind，按照手册来写，一部分是学校一些域名对应的内网地址(姑且称为<strong>静态</strong>解析吧)，其它的外网都通过上级DNS获取(姑且称为<strong>动态</strong>解析吧)，没啥好说的。</p>
+</li>
+</ol>
+<h2 id="问题">问题</h2>
+<p>自己电脑的DNS设置改机器，通过nslookup测试，发现无法连接。</p>
+<ol>
+<li>初认为是服务器上bind服务没开。使用 <code>service named status</code> 确认服务正常。</li>
+<li>排查服务有效性，在服务器上使用 <code>nslookup</code> 进行测试，同样<strong>无法获取到动态解析，但是能获取到静态的解析</strong>。</li>
+<li>查看<code>named</code>服务日志，发现动态解析的时候会请求到 IPv6 的 AAAA 记录，由于校内没有分配到 IPv6 的地址，所以会出现 <code>network unreachable</code> 错误。</li>
+<li>关闭 named 的 IPv6 ，</li>
+</ol>
+<pre><code># vi /etc/sysconfig/named
+//add following line:
+OPTIONS=&quot;－4&quot;
+</code></pre><ol start="5">
+<li>重启服务后发现本机仍然获取不到动态解析。查看日志发现</li>
+</ol>
+<pre><code>SOA: got insecure response; parent indicates it should be secure
+error (no valid RRSIG) resolving
+</code></pre><p>查手册后搞定</p>
+<pre><code># vi /etc/named.conf
+//change following lines:
+dnssec-enable no;
+dnssec-validation no;
+</code></pre><ol start="6">
+<li>发现本机可以正常获取到动态和静态解析了。</li>
+</ol>
+<p><strong>然而这肯定不是结局。</strong></p>
+<h2 id="神坑">神坑</h2>
+<p>自己电脑上使用 <code>nslookup</code> 依然无法获取。
+于是把目标转向了防火墙。</p>
+<ol>
+<li>
+<p>首先看了下服务器机房的防火墙，找了半天也没找到哪台防火墙里有关于 <code>udp:53</code> 端口的策略。然后滚去吃饭了。。。</p>
+</li>
+<li>
+<p>吃饭时忽然想到是不是 CentOS 自带的防火墙，于是回来装了个 <code>Nginx</code> ，发现自己curl能看到html，而通过自己电脑无法访问。</p>
+</li>
+<li>
+<p>使用 <code>iptables</code> 修改防火墙相关规则。报错：未安装iptables。</p>
+</li>
+<li>
+<p>是的这就是最后等着我的坑，花了半个小时之后， 才得知 CentOS 7 把 默认防火墙换成 <code>Firewalld</code> 了。。。</p>
+</li>
+<li>
+<p>使用 <code>Firewalld</code> 开放 <code>udp:53</code> 端口。自己电脑测试正常。</p>
+</li>
+</ol>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/%E7%BB%8F%E9%AA%8C">经验</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/thing-about-anti-invasion/">记一次反诈骗</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-59-09">09 Sep 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/create-dns-server/">自建DNS ——记一次注定坑爹的排错</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-52-02">02 Feb 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/you-chong-pei-yang-jiao-fang-shou/" style="background-image: url(https://static.hxsf.me/image/3/a4/6ab0cf62f0f13e89b1336fb8a65e8.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/3/a4/6ab0cf62f0f13e89b1336fb8a65e8.png-webp" alt="有一种培养叫放手"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/you-chong-pei-yang-jiao-fang-shou/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">有一种培养叫放手</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>有一种培养叫放手 世界上最困难的就是把一件你很拿手的工作交给别人， 再眼睁睁看着他把事情搞砸， 而你却还能心平气和不发一言， 那是培养人。 世界上最容易的就是把一件你很拿手的工作交给别人， 再手把手地教他把事情做</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E9%9A%8F%E6%84%9F">随感</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-611-11">21 November 2015</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/pythonzhua-qu-bingbi-zhi/" style="background-image: url(https://static.hxsf.me/image/e/58/7d96901e5cef8eb0351a383fb77aa.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/e/58/7d96901e5cef8eb0351a383fb77aa.jpg-webp" alt="python抓取bing壁纸"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/pythonzhua-qu-bingbi-zhi/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">python抓取bing壁纸</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>bing背景图很不错,一直用别人的bing壁纸获取软件(大部分C#写的)， 但是那些都或多或少不符合自己期望，不是会自动改桌面壁纸就是需要常驻后台，或者保存数量有上限。 然后想用python练个手。 看源码</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/python">python</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/bing">bing</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/wallpaper">wallpaper</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2016-105-05">9 May 2016</time>
+                        <span class="bull">&bull;</span> 2 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2016</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

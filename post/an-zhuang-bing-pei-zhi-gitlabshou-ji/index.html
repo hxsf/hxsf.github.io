@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>安装并配置GitLab手记 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">安装并配置GitLab手记</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2015-42-02">19 February 2015</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 2 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="安装并配置GitLab手记" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>照着官方的下载页面 <a href="https://about.gitlab.com/downloads/">https://about.gitlab.com/downloads/</a></p>
+<p>1-2步安装好GitLab 7.7.2 ，第三步里写的内容是使用一键配置来初始化GitLab</p>
+<p>如果单纯的裸机(没有安装任何的服务器数据库之类的||防止端口占用)里只想安装GitLab那么没有任何问题，直接</p>
+<pre><code>sudo gitlab-ctl reconfigure
+</code></pre><p>如果有特殊需求就得自己编辑这个自动配置的设置了(貌似有点绕。。。)</p>
+<p>GitLab7.7.2 on Ubuntu 14.04中自带的有logrotate、nginx、postgresql、redis、sidekiq、unicorn这六个</p>
+<p>我已经有的是nginx服务器这就造成了80、443端口的冲突。</p>
+<h2 id="1先试一下默认的配置">1、先试一下默认的配置</h2>
+<p>先关掉了自己的nginx服务器，然后在 <code>/etc/gitlab/gitlab.rb</code> 中修改 <code>external_url &quot;http://mydemo.com&quot;</code> 这一行，改为自己的服务器url，然后自动配置</p>
+<pre><code>sudo service nginx stop
+sudo gitlab-ctl reconfigure
+</code></pre><p>打开浏览器访问，一切正常。</p>
+<h2 id="2使用自己的nginx">2、使用自己的nginx</h2>
+<p>gitlab.rb 中反注释掉 GitLab Nginx 下面的</p>
+<pre><code>nginx['enable'] = false
+nginx_ci['enable'] = false
+</code></pre><p><a href="https://gitlab.com/gitlab-org/omnibus-gitlab/tree/629def0a7a26e7c2326566f0758d4a27857b52a3/doc/settings/nginx.md">官方文档地址</a></p>
+<p>然后在自己的 nginx 中添加配置</p>
+<pre><code>server {
+  listen *:80;
+  server_name git.yourdomain.com;
+  server_tokens off;
+  root /opt/gitlab/embedded/service/gitlab-rails/public;
+
+  client_max_body_size 250m;
+
+  access_log  /var/log/gitlab/nginx/gitlab_access.log;
+  error_log   /var/log/gitlab/nginx/gitlab_error.log;
+
+  # Ensure Passenger uses the bundled Ruby version
+  passenger_ruby /opt/gitlab/embedded/bin/ruby;
+
+  # Correct the $PATH variable to included packaged executables
+  passenger_set_cgi_param PATH &amp;quot;/opt/gitlab/bin:/opt/gitlab/embedded/bin:/usr/local/bin:/usr/bin:/bin&amp;quot;;
+
+  # Make sure Passenger runs as the correct user and group to
+  # prevent permission issues
+  passenger_user git;
+  passenger_group git;
+
+  # Enable Passenger &amp;amp; keep at least one instance running at all times
+  passenger_enabled on;
+  passenger_min_instances 1;
+
+  error_page 502 /502.html;
+}
+</code></pre><pre><code>sudo gitlab-ctl reconfigure
+</code></pre><p>但是却不能访问，查看 nginx 的 log 发现是没有自己的 nginx 没有 passenger (用于使 nginx 支持 Ruby on rails)</p>
+<p>于是添加了之后还是打不开。。。深深的忧桑中。。。明天再看看官方wiki吧。。。</p>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/">Let&#39;s Encrypt Wildcard 部署</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2018-73-03">03 Mar 2018</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/">安装并配置GitLab手记</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-42-02">02 Feb 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/" style="background-image: url(https://static.hxsf.me/image/8/f7/f97bcdf2f1baa84735fa707955d1d.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/8/f7/f97bcdf2f1baa84735fa707955d1d.jpg-webp" alt="PHP调用外部可执行文件的几种方法的差异"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">PHP调用外部可执行文件的几种方法的差异</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p><p>PHP 要调用 Shell 执行程式的时候, 偷懒有 <code>ls</code> 可以使用, 不过, 正规点可以使用 system()、exec()、shell_exec()、passthru()这四个 Function 来操作。</p></p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/php">php</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-52-02">12 February 2015</time>
+                        <span class="bull">&bull;</span> 3 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/web-clock-jstools/" style="background-image: url(https://static.hxsf.me/image/d/96/0fe823d7b706f9075423906f19207.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/d/96/0fe823d7b706f9075423906f19207.jpg-webp" alt="标题栏显示时钟 - js书签工具"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/web-clock-jstools/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">标题栏显示时钟 - js书签工具</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>早上看到的，微博回复没办法贴代码，所以贴在这。 使用很简单，浏览器书签/收藏 新建一个，名字随意，网址填如下代码。 功能很简单，点击上一步添加的书签，当前网页的标题就会变身时钟。 需求地址(新浪微博@小众软件</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/Javascript">Javascript</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/tools">tools</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-72-02">24 February 2015</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2015</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

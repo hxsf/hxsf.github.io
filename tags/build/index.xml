@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>build on Who am I</title>
+    <link>http://10.0.0.2:1313/tags/build/</link>
+    <description>Recent content in build on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 Mar 2015 04:50:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://10.0.0.2:1313/tags/build/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Make 命令简介</title>
+      <link>http://10.0.0.2:1313/post/make-ming-ling-jian-jie/</link>
+      <pubDate>Thu, 19 Mar 2015 04:50:00 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/make-ming-ling-jian-jie/</guid>
+      <description>代码变成可执行文件，叫做编译（compile）；先编译这个，还是先编译那个（即编译的安排），叫做构建（build）。 Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。但是实际上 ，任何</description>
+    </item>
+    
+  </channel>
+</rss>

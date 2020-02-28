@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C/C&#43;&#43; on Who am I</title>
+    <link>http://10.0.0.2:1313/tags/C/C&#43;&#43;/</link>
+    <description>Recent content in C/C&#43;&#43; on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="http://10.0.0.2:1313/tags/C/C++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C&#43;&#43;指针的概念解读</title>
+      <link>http://10.0.0.2:1313/post/c-zhi-zhen-de-gai-nian-jie-du/</link>
+      <pubDate>Wed, 28 Jan 2015 23:25:00 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/c-zhi-zhen-de-gai-nian-jie-du/</guid>
+      <description>指针是一个特殊的变量，它里面存储的数值被解释成为内存里的一个地址。要搞清一个指针需要搞清指针的四方面的内容：指针的类型，指针所指向的类型，指针的值或者叫指针所指向的内存区，还有指针本身所占据的内存区。</description>
+    </item>
+    
+  </channel>
+</rss>

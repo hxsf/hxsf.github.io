@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>比 XcodeGhost 更邪恶的手段 30 年前就出现了 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/%E5%AE%89%E5%85%A8">安全</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">比 XcodeGhost 更邪恶的手段 30 年前就出现了</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2015-610-10">10 October 2015</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 2 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="比 XcodeGhost 更邪恶的手段 30 年前就出现了" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>最近在开发者圈里讨论最多的莫过于 XcodeGhost。其实在 20 年前，更高明的手段就出现了。</p>
+<p>1984 年的时候，UNIX 创造者之一 Ken Thompson 获得了 ACM 图灵奖。他的获奖演讲叫做 Reflections on Trusting Trust（反思对信任的信任）。<a href="https://www.win.tue.nl/~aeb/linux/hh/thompson/trust.html">演讲全文</a>
+<img src="https://static.hxsf.me/image/2/e5/19a344ebb2935b7824aae5fcb613c.jpeg" alt="1984 年图灵奖得主 Ken Thompson"></p>
+<p>在这个稿子只有三页纸的演讲中他分三步描述了如何构造一个非常难以被发现的编译器后门。这后来被称为 the Ken Thompson Hack（KTH），有人说它是 the root password of all evil。</p>
+<p>在第一步里，Thompson 展示了一个可以输出自己的源代码的 C 程序。这需要一定技巧，但很多人作为编程练习都做过。</p>
+<p>在第二步里，Thompson 在 C 的编译器里增加了一段代码（后门），让它在检测到自己在编译 UNIX 的 login 命令时在输出里插入一个后门。这个后门会允许作者用特定密码以 root 身份登录系统。</p>
+<p>在第三步里，Thompson 在第二步的编译器里使用第一步的方法加入另一段代码（后门生成器），使得这个编译器在检测到它在编译自己时自动把第二步的后门和第三步的后门生成器插入到输出里。</p>
+<p>在得到一个第三步的编译器后，就可以把第二、三步新增的代码从源代码里删除，因为这个新的编译器在编译它自己原来「干净」的源代码时会自动把后门和后门生成器加上。很多语言的编译器都会使用「自举」的方式编译，也就是会用一个编译器的旧版本可执行文件来编译新版本的源码，所以这样一个高危的后门完全可以在一个开源项目里存在。通过阅读这个编译器的源码是无法发现这个后门的。</p>
+<p>KTH 还可以被加强，让它更难被察觉。比如这个编译器可以污染它编译的调试器、反编译器等开发过程中使用的工具，使得即使程序员反编译这个编译器后看到的仍是干净的代码，除非他使用的是 KTH 注入前的版本。所以当这个带有 KTH 注入的编译器来自于官方渠道时，它的后门是几乎不会被发现的，而且会影响所有用户。
+最近的 XcodeGhost 最多只能算是 the Ken Thompson Hack 的一个简化版本，没有试图隐藏自己，并且修改的不是编译器本身，而是 Xcode 附带的框架库。</p>
+<p>Thompson 在演讲里的结论是：即使开源项目也无法保证安全。在不考虑硬件或 microcode 后门的情况下，只有当运行的每一个程序都完全是自己写的时才能确保安全。可是谁的电脑上能只运行自己写的程序呢？恐怕只有 Ken Thompson 和 Dennis Ritchie 能在用自己发明的语言写的操作系统上用自己写的编译器编译自己写的操作系统吧。
+Ken Thompson 从贝尔实验室退休几年之后加入了 Google。在 Google，他和原来贝尔的老同事一起发明了 Go 语言。Go 从 1.5 版开始以自举的方式编译。;-)</p>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/%E5%AE%89%E5%85%A8">安全</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/">Let&#39;s Encrypt Wildcard 部署</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2018-73-03">03 Mar 2018</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/thing-about-anti-invasion/">记一次反诈骗</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-59-09">09 Sep 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/create-dns-server/">自建DNS ——记一次注定坑爹的排错</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-52-02">02 Feb 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ no-image
+">
+
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/update-to-v1-0-1/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">博客升级</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>###此次升级内容如下：### 首页增加每篇文章题图显示。 新增首页页脚标注。 整个博客静态内容全部改为中文 增加评论功能 ……</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/blog">blog</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-210-10">7 October 2015</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/dont-copy-paste-retype/" style="background-image: url(https://static.hxsf.me/image/0/24/b3f3e2b730d4fdf64940973550d06.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/0/24/b3f3e2b730d4fdf64940973550d06.png-webp" alt="重新敲一遍代码，胜过拷贝粘贴"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/dont-copy-paste-retype/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">重新敲一遍代码，胜过拷贝粘贴</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>原文地址 (original source): http://xion.io/post/programming/dont-copy-paste-retype.html 作者 (author): https://twitter.com/Xion__ 译文： http://www.labazhou.net/2015/10/dont-copy-paste-retype/ 译者： 腊八粥: http://www.labazhou.net/ 如今这个时代，Google 和 Stack Overflow 已经成为了很多开发者不可或缺的工具。但是最近，后者貌似名声坏了。一方面，是因为表面上特别、有时候会偏离适度的原则。说得更中</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E7%BC%96%E7%A8%8B">编程</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E6%80%9D%E6%83%B3">思想</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-610-10">10 October 2015</time>
+                        <span class="bull">&bull;</span> 3 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2015</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

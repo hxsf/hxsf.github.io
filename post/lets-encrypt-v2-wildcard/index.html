@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>Let&#39;s Encrypt Wildcard 部署 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/%E5%AE%89%E5%85%A8">安全</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">Let&#39;s Encrypt Wildcard 部署</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2018-73-03">13 March 2018</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 1 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="Let&#39;s Encrypt Wildcard 部署" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <blockquote>
+<p>2018-03-14 Let&rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。</p>
+</blockquote>
+<p>我们使用 <a href="https://acme.sh"><code>acme.sh</code></a> 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。</p>
+<p>安装 <code>acme.sh</code> 的过程其官网写的很详细，略过不表。</p>
+<h2 id="申请证书">申请证书</h2>
+<p>建议使用 dns-api 的方式进行验证。以 hxsf.me 为例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --issue --dns &lt;dns_api&gt; -d hxsf.me -d <span style="color:#e6db74">&#39;*.hxsf.me&#39;</span> -d <span style="color:#e6db74">&#39;*.static.hxsf.me&#39;</span>
+</code></pre></div><ul>
+<li><code>-d hxsf.me</code> 保证包含主域名</li>
+<li><code>-d *.hxsf.me</code> 二级泛域名</li>
+<li><code>-d *.static.hxsf.me</code> 三级泛域名</li>
+</ul>
+<h2 id="部署证书">部署证书</h2>
+<p>不建议直接在 webserver 中直接使用 acme.sh 的内部目录。原因有很多。</p>
+<ol>
+<li><code>acme.sh</code> 安装在 <code>$HOME/.acme.sh</code> 下， 一般而言 webserver 会使用单独的用户和组。权限问题</li>
+<li><code>acme.sh</code> 内部的文件结构可能会变化，尽量的解耦合，防止后期自动更新证书出问题。</li>
+<li>在 <code>acme.sh</code> 更新证书之后，需要让 webserver 重新读取新的证书。这就需要个钩子。</li>
+</ol>
+<p>好在新版本的 <code>acme.sh</code> 已经考虑到了这个特效，增加了部署hook，虽然目前只是简单的使用了文件拷贝和执行自定义命令。以nginx为例，使用方式如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">acme.sh --installcert -d hxsf.me --key-file /etc/nginx/ssl/wc.hxsf.me.key --fullchain-file /etc/nginx/ssl/wc.hxsf.me.crt --reloadcmd <span style="color:#e6db74">&#34;nginx -s reload&#34;</span>
+</code></pre></div><p>刷新下浏览器，网站已经挂上了小绿锁。</p>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/%E5%AE%89%E5%85%A8">安全</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/">Let&#39;s Encrypt Wildcard 部署</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2018-73-03">03 Mar 2018</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/thing-about-anti-invasion/">记一次反诈骗</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-59-09">09 Sep 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/create-dns-server/">自建DNS ——记一次注定坑爹的排错</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-52-02">02 Feb 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/useless-string-template/" style="background-image: url(https://static.hxsf.me/image/4/d0/43be88514798cc75d27918fb52cf5.png-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/4/d0/43be88514798cc75d27918fb52cf5.png-webp" alt="没啥用的 JavaScript 字符串模板"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/useless-string-template/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">没啥用的 JavaScript 字符串模板</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>最近在做些关于模板引擎的事情，花半小时搞了个简陋版的字符串模板。 追求简便，直接添加到 String.prototype 上了。 How it work String.prototype.format = (function() { // debug_level: [0, 1, 2] =&gt; [&#39;igorne&#39;, &#39;warning&#39;, &#39;error&#39;] var default_option = { l_token: &#39;{{&#39;, r_token: &#39;}}&#39;, debug_level: 1 } var vail = function (raw, key, debug_level) { if (raw === null) {return &#39;&#39;;} if (raw === undefined) { switch (debug_level) { case 2: throw new Error(&#39;the</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/Javascript">Javascript</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E7%BC%96%E7%A8%8B">编程</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/js">js</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/tools">tools</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2016-210-10">11 October 2016</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/fix-macos-high-sierra-all-app-cannot-open/" style="background-image: url(https://static.hxsf.me/blog/kernel-panic-mac-os-x-restart-pieriezaghruzka-nadpis-sieryi-1920x1200.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/blog/kernel-panic-mac-os-x-restart-pieriezaghruzka-nadpis-sieryi-1920x1200.jpg-webp" alt="修复 macOS 10.13 所有软件无法打开"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/fix-macos-high-sierra-all-app-cannot-open/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">修复 macOS 10.13 所有软件无法打开</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>问题表现 所有图标变空白 点击所有软件，显示已损坏或不完整 如图： 修复 macOS 每个用户有两个ID，一个是 UniqeID (uid) ，一个GeneratedUID 出现所有app 都打不开，貌似是跟 GeneratedUID 相关的某个东西出问题导致的。 默认的第一个</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2018-64-04">26 April 2018</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

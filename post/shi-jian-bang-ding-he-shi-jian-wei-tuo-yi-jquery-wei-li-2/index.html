@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>事件绑定和事件委托 (以 jQuery 为例) · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/Javascript">Javascript</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">事件绑定和事件委托 (以 jQuery 为例)</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2015-91-01">30 January 2015</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 7 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="事件绑定和事件委托 (以 jQuery 为例)" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>随着DOM结构的复杂化和Ajax等动态脚本技术的运用，事件委托自然浮出了水面。jQuery为绑定和委托事件提供了 <code>.bind()</code> 、<code>.live()</code> 和 <code>.delegate()</code> 方法。本文在讨论这几个方法内部实现的基础上，展示它们的优劣势及适用场合。</p>
+<h2 id="事件委托">事件委托</h2>
+<p>事件委托的事例在现实当中比比皆是。比如，有三个同事预计会在周一收到快递。为签收快递，有两种办法：一是三个人在公司门口等快递；二是委托给前台MM代为签收。现实当中，我们大都采用委托的方案（公司也不会容忍那么多员工站在门口就为了等快递）。前台MM收到快递后，她会判断收件人是谁，然后按照收件人的要求签收，甚至代为付款。这种方案还有一个优势，那就是即使公司里来了新员工（不管多少），前台MM也会在收到寄给新员工的快递后核实并代为签收。</p>
+<p>我们知道，DOM在为页面中的每个元素分派事件时，相应的元素一般都在事件冒泡阶段处理事件。在类似 <code>body &gt; div &gt; a</code> 这样的结构中，如果单击a元素，click 事件会从a一直冒泡到div和body（即document对象）。因此，发生在a上面的单击事件，div和body元素同样可以处理。而利用事件传播（这里是冒泡）这个机制，就可以实现事件委托。具体来说，事件委托就是事件目标自身不处理事件，而是把处理任务委托给其父元素或者祖先元素，甚至根元素（document）。</p>
+<h2 id="bind">.bind()</h2>
+<p>假设有一个多行多列的表格，我们想让用户单击每个单元格都能看到与其中内容相关的更多信息（比如，通过提示条）。为此，可以为每个单元格都绑定click事件：</p>
+<pre><code>$(&quot;info_table td&quot;).bind(&quot;click&quot;, function(){/*显示更多信息*/});
+</code></pre><p>问题是，如果表格中要绑定单击事件的有10列500行，那么查找和遍历5000个单元格会导致脚本执行速度明显变慢，而保存5000个td元素和相应的事件处理程序也会占用大量内存（类似于让每个人亲自站在门口等快递）。</p>
+<p>在前面这个例子的基础上，如果我们想实现一个简单的相册应用，每页只显示50张照片的缩略图（50个单元格），用户点击“第x页”（或“下一页”）链接可以通过Ajax从服务器动态加载另外50张照片。在这种情况下，似乎使用.bind()方法为50个单元格绑定事件又可以接受了。</p>
+<p>事实却不然。使用 <code>.bind()</code> 方法只会给第一页中的50个单元格绑定单击事件，动态加载的后续页面中的单元格都不会有这个单击事件。换句话说， <code>.bind()</code> 只能给调用它的时候已经存在的元素绑定事件，不能给未来新增的元素绑定事件（类似于新来的员工收不到快递）。</p>
+<p>事件委托可以解决上述两个问题。具体到代码上，只要用jQuery 1.3新增的.live()方法代替 <code>.bind()</code> 方法即可：</p>
+<pre><code>$(&quot;#info_table td&quot;).live(&quot;click&quot;,function(){/*显示更多信息*/});
+</code></pre><p>这里的.live()方法会把click事件绑定到$(document)对象（但这一点从代码中体现不出来，这也是.live()方法饱受诟病的一个重要原因，稍后再详细讨论），而且只需要给$(document)绑定一次（不是50次，更不是5000次），然后就能够处理后续动态加载的照片单元格的单击事件。在接收到任何事件时，$(document)对象都会检查事件类型和事件目标，如果是click事件且事件目标是td，那么就执行委托给它的处理程序。</p>
+<h2 id="live">.live()</h2>
+<p>到目前为止，一切似乎很完美。可惜，事实并非如此。因为.live()方法并不完美，它有如下几个主要缺点：</p>
+<ul>
+<li>$()函数会找到当前页面中的所有td元素并创建jQuery对象，但在确认事件目标时却不用这个td元素集合，而是使用选择符表达式与event.target或其祖先元素进行比较，因而生成这个jQuery对象会造成不必要的开销；</li>
+<li>默认把事件绑定到$(document)元素，如果DOM嵌套结构很深，事件冒泡通过大量祖先元素会导致性能损失；</li>
+<li>只能放在直接选择的元素后面，不能在连缀的DOM遍历方法后面使用，即$(&quot;#info_table td&rdquo;).live&hellip;可以，但$(&quot;#info_table&rdquo;).find(&ldquo;td&rdquo;).live&hellip;不行；</li>
+<li>收集td元素并创建jQuery对象，但实际操作的却是$(document)对象，令人费解。</li>
+</ul>
+<h3 id="解决之道">解决之道</h3>
+<p>为了避免生成不必要的jQuery对象，可以使用一种叫做“早委托”的hack，即在$(document).ready()方法外部调用.live()：</p>
+<pre><code>(function($){
+    $(&quot;#info_table td&quot;).live(&quot;click&quot;,function(){/*显示更多信息*/});
+})(jQuery);
+</code></pre><p>在此，<code>(function($){...})(jQuery)</code> 是一个“<strong>立即执行的匿名函数</strong>”，构成了一个闭包，可以防止命名冲突。在匿名函数内部， $ 参数引用 jQuery 对象。这个匿名函数不会等到DOM就绪就会执行。注意，使用这个hack时，脚本必须是在页面的head元素中链接和(或)执行的。之所以选择这个时机，因为这时候刚好document元素可用，而整个DOM还远未生成；如果把脚本放在结束的body标签前面，就没有意义了，因为那时候DOM已经完全可用了。</p>
+<p>为了避免事件冒泡造成的性能损失，jQuery从1.4开始支持在使用.live()方法时配合使用一个上下文参数：</p>
+<pre><code>$(&quot;td&quot;,$(&quot;#info_table&quot;)[0]).live(&quot;click&quot;,function(){/*显示更多信息*/});
+</code></pre><p>这样，“受托方”就从默认的 <code>$(document)</code> 变成了 <code>$(&quot;#info_table&quot;)[0]</code> ，节省了冒泡的旅程。不过，与 <code>.live()</code> 共同使用的上下文参数必须是一个单独的DOM元素，所以这里指定上下文对象时使用的是 <code>$(&quot;#info_table&quot;)[0]</code> ，即使用数组的索引操作符来取得的一个DOM元素。</p>
+<h2 id="delegate">.delegate()</h2>
+<p>如前所述，为了突破单一<code>.bind()</code>方法的局限性，实现事件委托，jQuery 1.3 引入了<code>.live()</code>方法。后来，为解决“事件传播链”过长的问题，jQuery 1.4又支持为<code>.live()</code>方法指定上下文对象。而为了解决无谓生成元素集合的问题，jQuery 1.4.2 干脆直接引入了一个新方法<code>.delegate()</code>。</p>
+<p>使用<code>.delegate()</code>，前面的例子可以这样写：</p>
+<pre><code>$(&quot;#info_table&quot;).delegate(&quot;td&quot;,&quot;click&quot;,function(){/*显示更多信息*/});
+</code></pre><p>使用<code>.delegate()</code>有如下优点（或者说解决了<code>.live()</code>方法的如下问题）：</p>
+<ul>
+<li>直接将目标元素选择符（&ldquo;td&rdquo;）、事件（&ldquo;click&rdquo;）及处理程序与“受拖方” $(&quot;#info_table&rdquo;) 绑定，不额外收集元素、事件传播路径缩短、语义明确；</li>
+<li>支持在连缀的DOM遍历方法后面调用，即支持 <code>$(&quot;table&quot;).find(&quot;#info&quot;).delegate...</code> ，支持精确控制；
+可见， <code>.delegate()</code> 方法是一个相对完美的解决方案。但在DOM结构简单的情况下，也可以使用 <code>.live()</code> 。</li>
+</ul>
+<blockquote>
+<p>提示：使用事件委托时，如果注册到目标元素上的其他事件处理程序使用 <code>.stopPropagation()</code> 阻止了事件传播，那么事件委托就会失效。</p>
+</blockquote>
+<h2 id="结论">结论</h2>
+<p>在下列情况下，应该使用<code>.live()</code>或<code>.delegate()</code>，而不能使用<code>.bind()</code>：</p>
+<ul>
+<li>为DOM中的很多元素绑定相同事件；</li>
+<li>为DOM中尚不存在的元素绑定事件；</li>
+</ul>
+<blockquote>
+<p>PS：根据<a href="http://blog.jquery.com/2011/09/28/jquery-1-7-beta-1-released/">jQuery 1.7 Beta 1</a>的发版说明，jQuery 1.7为了解决.bind()、.live()和.delegate()并存造成的不一致性问题，将会增加一对新的事件方法：.on()和.off()：</p>
+<p><code>$(elems).on(events, selector, data, fn);</code></p>
+<p><code>$(elems).off(events, selector, fn);</code></p>
+<p>如果指定selector，则为事件委托；否则，就是常规绑定。</p>
+<p>《jQuery基础教程（第3版）》<br>
+<a href="http://www.alfajango.com/blog/the-difference-between-jquerys-bind-live-and-delegate/">The Difference Between jQuery’s .bind(), .live(), and .delegate()</a><br>
+[bind() vs live() vs delegate() function](<a href="http://jquerybyexample.blogspot.com/2010/08/bind-vs-">http://jquerybyexample.blogspot.com/2010/08/bind-vs-</a> live-vs-delegate-function.html)<br>
+<a href="http://api.jquery.com/">jQuery API</a></p>
+</blockquote>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/Javascript">Javascript</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/useless-string-template/">没啥用的 JavaScript 字符串模板</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-210-10">10 Oct 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/web-clock-jstools/">标题栏显示时钟 - js书签工具</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-72-02">02 Feb 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/">事件绑定和事件委托 (以 jQuery 为例)</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-91-01">01 Jan 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ no-image
+">
+
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/c-zhi-zhen-de-gai-nian-jie-du/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">C&#43;&#43;指针的概念解读</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>指针是一个特殊的变量，它里面存储的数值被解释成为内存里的一个地址。要搞清一个指针需要搞清指针的四方面的内容：指针的类型，指针所指向的类型，指针的值或者叫指针所指向的内存区，还有指针本身所占据的内存区。</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/C/C&#43;&#43;">C/C&#43;&#43;</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-111-01">28 January 2015</time>
+                        <span class="bull">&bull;</span> 12 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/" style="background-image: url(https://static.hxsf.me/image/8/f7/f97bcdf2f1baa84735fa707955d1d.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/8/f7/f97bcdf2f1baa84735fa707955d1d.jpg-webp" alt="PHP调用外部可执行文件的几种方法的差异"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">PHP调用外部可执行文件的几种方法的差异</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p><p>PHP 要调用 Shell 执行程式的时候, 偷懒有 <code>ls</code> 可以使用, 不过, 正规点可以使用 system()、exec()、shell_exec()、passthru()这四个 Function 来操作。</p></p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/php">php</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2015-52-02">12 February 2015</time>
+                        <span class="bull">&bull;</span> 3 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2015</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dev on Who am I</title>
+    <link>http://10.0.0.2:1313/tags/dev/</link>
+    <description>Recent content in dev on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Sep 2015 08:31:35 +0000</lastBuildDate>
+    
+	<atom:link href="http://10.0.0.2:1313/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gulp VS Grunt 前端工程的构建工具对比</title>
+      <link>http://10.0.0.2:1313/post/gulp-vs-grunt/</link>
+      <pubDate>Sun, 20 Sep 2015 08:31:35 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/gulp-vs-grunt/</guid>
+      <description>Gulp vs Grunt 前端工程的构建工具对比 Grunt -&amp;gt; Gulp 早些年提到构建工具，难免会让人联想到历史比较悠久的Make，Ant，以及后来为了更方便的构建结构类似的Java项目而出现的Maven。Node催生了一批自动化工具，像</description>
+    </item>
+    
+  </channel>
+</rss>

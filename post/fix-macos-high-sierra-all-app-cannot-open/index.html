@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>修复 macOS 10.13 所有软件无法打开 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+
+                <h1 class="post-full-title">修复 macOS 10.13 所有软件无法打开</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2018-64-04">26 April 2018</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 1 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="修复 macOS 10.13 所有软件无法打开" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <h2 id="问题表现">问题表现</h2>
+<ol>
+<li>所有图标变空白</li>
+<li>点击所有软件，显示已损坏或不完整</li>
+</ol>
+<p>如图：
+<img src="https://static.hxsf.me/blog/7e6addf678bd47b44ec3409639740720.jpg" alt="7e6addf678bd47b44ec3409639740720"></p>
+<h2 id="修复">修复</h2>
+<blockquote>
+<p>macOS 每个用户有两个ID，一个是 UniqeID (uid) ，一个GeneratedUID
+出现所有app 都打不开，貌似是跟 GeneratedUID 相关的某个东西出问题导致的。
+默认的第一个用户 uid = 501</p>
+</blockquote>
+<ol>
+<li>
+<p>新建一个管理员用户 temp（ uid 应该是 502）。然后登录到 temp</p>
+</li>
+<li>
+<p>将老用户重命名为 gg，修改 uid 为 任意值（如555），新建管理员用户，将 uid 修改为 501（为了继承老用户的所有 fs 的权限）。</p>
+</li>
+<li>
+<p>重启，用新用户登录。</p>
+</li>
+<li>
+<p>然后把 老用户和 temp 用户删掉。</p>
+</li>
+<li>
+<p>修复下权限。。。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo find / -uid <span style="color:#ae81ff">502</span> -exec chown <span style="color:#ae81ff">501</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+sudo find / -uid <span style="color:#ae81ff">555</span> -exec chown <span style="color:#ae81ff">501</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</code></pre></div></li>
+</ol>
+<ul>
+<li>
+<p>PS： 目前 GeneratedUID 修改会不会引发什么问题，不是很清楚。</p>
+</li>
+<li>
+<p>PPS： 启动的 APFS 貌似跟着初始账号的 GeneratedUID 有关系导致不能删除初始用户。不过我强制删了老用户没感觉有啥影响。</p>
+</li>
+<li>
+<p>PPPS：因为啥都打不开（包括系统偏好设置.app），但是可以ssh 上去。
+ssh 上去后， /Applications/System\ Preferences.app/Contents/MacOS/System\ Preferences 能拉起各种 APP。</p>
+</li>
+<li>
+<p>PPPPS：没开 ssh 和 远程管理的 可以进安全模式搞。</p>
+</li>
+</ul>
+<p>感觉直接重置下当前用户的 GeneratedUID 就可以了。
+具体导致问题的原因不知道在哪（不在 ～ 下）。可能在 apfs preboot 里。</p>
+<p>对 APFS preboot 不了解。。。有了解大大佬嘛？</p>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed"><article class="post-card post
+ no-image
+">
+
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">Let&#39;s Encrypt Wildcard 部署</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>2018-03-14 Let&rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。 我们使用 acme.sh 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。 安装 acme.sh 的过程其官网写的很详细，略过</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E5%AE%89%E5%85%A8">安全</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E9%83%A8%E7%BD%B2">部署</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/ssl">ssl</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2018-73-03">13 March 2018</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on Who am I</title>
+    <link>http://10.0.0.2:1313/categories/blog/</link>
+    <description>Recent content in blog on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 07 Oct 2015 02:53:41 +0000</lastBuildDate>
+    
+	<atom:link href="http://10.0.0.2:1313/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>博客升级</title>
+      <link>http://10.0.0.2:1313/post/update-to-v1-0-1/</link>
+      <pubDate>Wed, 07 Oct 2015 02:53:41 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/update-to-v1-0-1/</guid>
+      <description>###此次升级内容如下：### 首页增加每篇文章题图显示。 新增首页页脚标注。 整个博客静态内容全部改为中文 增加评论功能 ……</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gitlab on Who am I</title>
+    <link>http://10.0.0.2:1313/categories/gitlab/</link>
+    <description>Recent content in gitlab on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 Feb 2015 04:19:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://10.0.0.2:1313/categories/gitlab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装并配置GitLab手记</title>
+      <link>http://10.0.0.2:1313/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</link>
+      <pubDate>Thu, 19 Feb 2015 04:19:00 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</guid>
+      <description>照着官方的下载页面 https://about.gitlab.com/downloads/ 1-2步安装好GitLab 7.7.2 ，第三步里写的内容是使用一键配置来初始化GitLab 如果单纯的裸机(没有安装任何的服务器数据库之类的||防止端口占用)里只想安装GitLab那么没有任何</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    
+    
+    <title>没啥用的 JavaScript 字符串模板 · Who am I</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <link rel="stylesheet" href="http://10.0.0.2:1313/style.main.934d0c861330786e9e6901a80c91cbc11cafad0be3153c76dda6ab801cde1df3.css"  integrity="sha256-k00MhhMweG6eaQGoDJHLwRyvrQvjFTx23aargBzeHfM=" />
+
+</head>
+<body class=" post-template ">
+
+    <div class="site-wrapper">
+
+<header class="site-header"><div class="outer site-nav-main">
+    <div class="inner"><nav class="site-nav">
+    <div class="site-nav-left">
+        
+            <a class="site-nav-logo" href="http://10.0.0.2:1313/">Who am I</a>
+        
+        
+        <div class="site-nav-content">
+            <ul class="nav" role="menu">
+                
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+
+</div>
+</div></header>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post  no-image ">
+
+            <header class="post-full-header">
+
+                
+                    
+                    <section class="post-full-tags">
+                        <a href="/tags/Javascript">Javascript</a>
+                    </section>
+                
+
+                <h1 class="post-full-title">没啥用的 JavaScript 字符串模板</h1>
+
+                
+
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+
+                        <ul class="author-list">
+    <li class="author-list-item">
+        <div class="author-card">
+            <div class="author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></div>
+            <div class="author-info">
+                <div class="author-info">
+                    <h2>hxsf</h2>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="author-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+    </li>
+</ul>
+
+                        <section class="post-full-byline-meta">
+                            
+                                <h4 class="author-name">hxsf</h4>
+                            
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="2016-210-10">11 October 2016</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> 1 min read</span>
+                            </div>
+                        </section>
+
+                    </section>
+
+
+                </div>
+            </header>
+
+            
+            <figure class="post-full-image">
+                <img src="https://static.hxsf.me/images/2015/07/hello-world.jpg-webp" alt="没啥用的 JavaScript 字符串模板" />
+            </figure>
+            
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <p>最近在做些关于模板引擎的事情，花半小时搞了个简陋版的字符串模板。</p>
+<p>追求简便，直接添加到 <code>String.prototype</code> 上了。</p>
+<h3 id="how-it-work">How it work</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">String.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">format</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">function</span>() {
+    <span style="color:#75715e">// debug_level: [0, 1, 2] =&gt; [&#39;igorne&#39;, &#39;warning&#39;, &#39;error&#39;]
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">default_option</span> <span style="color:#f92672">=</span> {
+        <span style="color:#a6e22e">l_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{&#39;</span>,
+        <span style="color:#a6e22e">r_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;}}&#39;</span>,
+        <span style="color:#a6e22e">debug_level</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">vail</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">raw</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">debug_level</span>) {
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">raw</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>;}
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">raw</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>) {
+            <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">debug_level</span>) {
+                <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;the key &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is undefined!&#39;</span>);<span style="color:#66d9ef">break</span>;
+                <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">warn</span>(<span style="color:#e6db74">&#39;the key &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">key</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is undefined!&#39;</span>);<span style="color:#66d9ef">break</span>;
+                <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> ;
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>;
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">raw</span>;
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">args</span>, <span style="color:#a6e22e">opt</span>) {
+        <span style="color:#a6e22e">opt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opt</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">default_option</span>
+        <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">l_token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">l_token</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">default_option</span>.<span style="color:#a6e22e">l_token</span>
+        <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">r_token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">r_token</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">default_option</span>.<span style="color:#a6e22e">r_token</span>
+        <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">debug_level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">debug_level</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">default_option</span>.<span style="color:#a6e22e">debug_level</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">debug_level</span>
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">args</span> <span style="color:#66d9ef">instanceof</span> Object) {
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">reg</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">l_token</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;(\\S+?)&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">r_token</span>, <span style="color:#e6db74">&#39;g&#39;</span>);
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">reg</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">index</span>) {
+                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">vail</span>(<span style="color:#a6e22e">args</span>[<span style="color:#a6e22e">index</span>], <span style="color:#a6e22e">index</span>, <span style="color:#a6e22e">opt</span>.<span style="color:#a6e22e">debug_level</span>);
+            })
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SyntaxError</span>(<span style="color:#e6db74">&#39;first arg must be a array or map!&#39;</span>);
+        }
+    }
+})();
+</code></pre></div><h3 id="usage">Usage</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">
+<span style="color:#e6db74">&#34;He&#39;s {{name}}, and {{age}} years old.&#34;</span>.<span style="color:#a6e22e">format</span>({<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tom&#39;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">16</span>})
+<span style="color:#75715e">// He&#39;s tom, and 16 years old.
+</span><span style="color:#75715e"></span>
+<span style="color:#e6db74">&#34;He&#39;s {{0}}, and {{1}} years old.&#34;</span>.<span style="color:#a6e22e">format</span>([<span style="color:#e6db74">&#39;god&#39;</span>, <span style="color:#ae81ff">100</span>])
+<span style="color:#75715e">// He&#39;s god, and 100 years old.
+</span><span style="color:#75715e"></span>
+
+<span style="color:#e6db74">&#34;He&#39;s &lt;%0%&gt;, and &lt;%1%&gt; years old.&#34;</span>.<span style="color:#a6e22e">format</span>([<span style="color:#e6db74">&#39;mali&#39;</span>, <span style="color:#ae81ff">34</span>], {<span style="color:#a6e22e">l_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;%&#39;</span>, <span style="color:#a6e22e">r_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;%&gt;&#39;</span>})
+<span style="color:#75715e">// He&#39;s mali, and 34 years old.
+</span><span style="color:#75715e"></span>
+
+<span style="color:#e6db74">&#34;if data is empty or not has the key, as default, it will log the warning. #{{data1}}:{{data2}}=end&#34;</span>.<span style="color:#a6e22e">format</span>({<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;name&#39;</span>}) <span style="color:#75715e">// [default] debug_level = 1
+</span><span style="color:#75715e">// if data is empty or not has the key, as default, it will log the warning. #:=end
+</span><span style="color:#75715e"></span>
+
+<span style="color:#e6db74">&#34;also you can igorne the warnings.{{100}}=end&#34;</span>.<span style="color:#a6e22e">format</span>([<span style="color:#e6db74">&#39;god&#39;</span>, <span style="color:#ae81ff">100</span>], {<span style="color:#a6e22e">debug_level</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>});
+<span style="color:#75715e">// also you can igorne the warnings.=end
+</span><span style="color:#75715e"></span>
+
+<span style="color:#e6db74">&#34;also you can use strict mode, it throw Error directly.{{100}}=end&#34;</span>.<span style="color:#a6e22e">format</span>([<span style="color:#e6db74">&#39;god&#39;</span>, <span style="color:#ae81ff">100</span>], {<span style="color:#a6e22e">debug_level</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>});
+<span style="color:#75715e">// also you can igorne the warnings.=end
+</span></code></pre></div><p>补图：</p>
+<p><img src="https://static.hxsf.me/image/4/d0/43be88514798cc75d27918fb52cf5.png" alt="例子"></p>
+<p>最近在思考模板引擎的实现方式，已经有想法并且实现了一部分。欢迎交流与讨论。</p>
+<p>:)</p>
+
+                </div>
+            </section>
+
+        </article>
+
+    </div>
+</main>
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+    
+    <article class="read-next-card">
+        <header class="read-next-card-header">
+            <h3><span>More in</span> <a href="/tags/Javascript">Javascript</a></h3>
+        </header>
+        <div class="read-next-card-content">
+            <ul>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/useless-string-template/">没啥用的 JavaScript 字符串模板</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2016-210-10">10 Oct 2016</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/web-clock-jstools/">标题栏显示时钟 - js书签工具</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-72-02">02 Feb 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+                <li>
+                    <h4><a href="http://10.0.0.2:1313/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/">事件绑定和事件委托 (以 jQuery 为例)</a></h4>
+                    <div class="read-next-card-meta">
+                            <p><time datetime="2015-91-01">01 Jan 2015</time> 
+                                
+                            </p>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </article>
+<article class="post-card post
+ post-card-large ">
+
+        
+            <a class="post-card-image-link" href="http://10.0.0.2:1313/post/thing-about-anti-invasion/" style="background-image: url(https://static.hxsf.me/image/8/1b/734f6dc50bc3207c30e66a7827592.jpg-webp);">
+                <img class="post-card-image"src="https://static.hxsf.me/image/8/1b/734f6dc50bc3207c30e66a7827592.jpg-webp" alt="记一次反诈骗"/>
+            </a>
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/thing-about-anti-invasion/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">记一次反诈骗</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>2016-09-10 21:00 家父收到陌生号码的短信，大致内容如下： X(姓氏)家长，你好，为了不使家长错过学校的通知，请及时下载校园网 http://IP/path 逾期自负。 由于该短信破绽百出，家父没有第一时间下载，与我取得联系。 疑点 已外出实习，并不在学</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E5%AE%89%E5%85%A8">安全</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E7%BB%8F%E9%AA%8C">经验</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E9%9A%8F%E6%84%9F">随感</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2016-59-09">10 September 2016</time>
+                        <span class="bull">&bull;</span> 2 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+
+            <article class="post-card post
+ no-image
+">
+
+        
+    
+        <div class="post-card-content">
+    
+            <a class="post-card-content-link" href="http://10.0.0.2:1313/post/lets-encrypt-v2-wildcard/">
+    
+                <header class="post-card-header">
+                    <h2 class="post-card-title">Let&#39;s Encrypt Wildcard 部署</h2>
+                </header>
+    
+                <section class="post-card-excerpt">
+                    <p>2018-03-14 Let&rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。 我们使用 acme.sh 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。 安装 acme.sh 的过程其官网写的很详细，略过</p>
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                <ul class="post-card-tags">
+                    
+                    <li class="post-card-tag"><a href="/tags/%E5%AE%89%E5%85%A8">安全</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/%E9%83%A8%E7%BD%B2">部署</a></li>
+                    
+                    <li class="post-card-tag"><a href="/tags/ssl">ssl</a></li>
+                    
+                </ul>
+                <ul class="author-list">
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">hxsf</div>
+                        <a href="https://test.com" class="static-avatar author-profile-image"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg></a>
+                    </li>
+                </ul>
+                <div class="post-card-byline-content">
+                    <span>hxsf</span>
+                    <span class="post-card-byline-date"><time datetime="2018-73-03">13 March 2018</time>
+                        <span class="bull">&bull;</span> 1 min read</span>
+                </div>
+            </footer>
+    
+        </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://10.0.0.2:1313/">Who am I</a> &copy; 2016</section>
+                <nav class="site-footer-nav">
+                    <a href="http://10.0.0.2:1313/">Latest Posts</a>
+                    
+                    
+                    
+                    <a href="https://jonathanjanssens.com" target="_blank" rel="noopener" style="opacity: 0.5;">Hugo Casper3 by Jonathan Janssens</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

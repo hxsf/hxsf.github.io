@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Who am I</title>
+    <link>http://10.0.0.2:1313/tags/linux/</link>
+    <description>Recent content in linux on Who am I</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 Feb 2016 05:38:32 +0000</lastBuildDate>
+    
+	<atom:link href="http://10.0.0.2:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自建DNS ——记一次注定坑爹的排错</title>
+      <link>http://10.0.0.2:1313/post/create-dns-server/</link>
+      <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/create-dns-server/</guid>
+      <description>背景： 服务一直用Ubuntu Server(deb包管理) 个人使用OS X 起因 因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。 心血来</description>
+    </item>
+    
+    <item>
+      <title>Linux内核与GNU/Linux发行版</title>
+      <link>http://10.0.0.2:1313/post/linux-kernel-and-linux-distribution/</link>
+      <pubDate>Sat, 10 Oct 2015 21:46:38 +0000</pubDate>
+      
+      <guid>http://10.0.0.2:1313/post/linux-kernel-and-linux-distribution/</guid>
+      <description>Linux内核与GNU/Linux发行版 ##名词释义 Linux内核 Linux内核（英语：Linux kernel），使用于类Unix操作系统，Linux家族的操作系统内核，以C语言写成，符合POSIX标</description>
+    </item>
+    
+  </channel>
+</rss>
