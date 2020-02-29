@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>centos on Who am I</title>
-    <link>http://blog.hxsf.me/categories/centos/</link>
+    <link>https://blog.hxsf.me/categories/centos/</link>
     <description>Recent content in centos on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 19 Feb 2016 05:38:32 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/categories/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>自建DNS ——记一次注定坑爹的排错</title>
-      <link>http://blog.hxsf.me/post/create-dns-server/</link>
+      <link>https://blog.hxsf.me/post/create-dns-server/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/create-dns-server/</guid>
+      <guid>https://blog.hxsf.me/post/create-dns-server/</guid>
       <description>背景： 服务一直用Ubuntu Server(deb包管理) 个人使用OS X 起因 因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。 心血来</description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>部署 on Who am I</title>
-    <link>http://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/</link>
+    <link>https://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/</link>
     <description>Recent content in 部署 on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Mar 2018 19:28:50 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/tags/%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Let&#39;s Encrypt Wildcard 部署</title>
-      <link>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</link>
+      <link>https://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</guid>
+      <guid>https://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</guid>
       <description>2018-03-14 Let&amp;rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。 我们使用 acme.sh 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。 安装 acme.sh 的过程其官网写的很详细，略过</description>
     </item>
     
     <item>
       <title>安装并配置GitLab手记</title>
-      <link>http://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</link>
+      <link>https://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</link>
       <pubDate>Thu, 19 Feb 2015 04:19:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</guid>
+      <guid>https://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</guid>
       <description>照着官方的下载页面 https://about.gitlab.com/downloads/ 1-2步安装好GitLab 7.7.2 ，第三步里写的内容是使用一键配置来初始化GitLab 如果单纯的裸机(没有安装任何的服务器数据库之类的||防止端口占用)里只想安装GitLab那么没有任何</description>
     </item>
     

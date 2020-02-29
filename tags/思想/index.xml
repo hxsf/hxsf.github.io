@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>思想 on Who am I</title>
-    <link>http://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/</link>
+    <link>https://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/</link>
     <description>Recent content in 思想 on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 10 Oct 2015 18:30:22 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/tags/%E6%80%9D%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>重新敲一遍代码，胜过拷贝粘贴</title>
-      <link>http://blog.hxsf.me/post/dont-copy-paste-retype/</link>
+      <link>https://blog.hxsf.me/post/dont-copy-paste-retype/</link>
       <pubDate>Sat, 10 Oct 2015 18:30:22 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/dont-copy-paste-retype/</guid>
+      <guid>https://blog.hxsf.me/post/dont-copy-paste-retype/</guid>
       <description>原文地址 (original source): http://xion.io/post/programming/dont-copy-paste-retype.html 作者 (author): https://twitter.com/Xion__ 译文： http://www.labazhou.net/2015/10/dont-copy-paste-retype/ 译者： 腊八粥: http://www.labazhou.net/ 如今这个时代，Google 和 Stack Overflow 已经成为了很多开发者不可或缺的工具。但是最近，后者貌似名声坏了。一方面，是因为表面上特别、有时候会偏离适度的原则。说得更中</description>
     </item>
     

@@ -2,201 +2,201 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Who am I</title>
-    <link>http://blog.hxsf.me/post/</link>
+    <link>https://blog.hxsf.me/post/</link>
     <description>Recent content in Posts on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 26 Apr 2018 18:37:52 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>修复 macOS 10.13 所有软件无法打开</title>
-      <link>http://blog.hxsf.me/post/fix-macos-high-sierra-all-app-cannot-open/</link>
+      <link>https://blog.hxsf.me/post/fix-macos-high-sierra-all-app-cannot-open/</link>
       <pubDate>Thu, 26 Apr 2018 18:37:52 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/fix-macos-high-sierra-all-app-cannot-open/</guid>
+      <guid>https://blog.hxsf.me/post/fix-macos-high-sierra-all-app-cannot-open/</guid>
       <description>问题表现 所有图标变空白 点击所有软件，显示已损坏或不完整 如图： 修复 macOS 每个用户有两个ID，一个是 UniqeID (uid) ，一个GeneratedUID 出现所有app 都打不开，貌似是跟 GeneratedUID 相关的某个东西出问题导致的。 默认的第一个</description>
     </item>
     
     <item>
       <title>Let&#39;s Encrypt Wildcard 部署</title>
-      <link>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</link>
+      <link>https://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</link>
       <pubDate>Tue, 13 Mar 2018 19:28:50 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</guid>
+      <guid>https://blog.hxsf.me/post/lets-encrypt-v2-wildcard/</guid>
       <description>2018-03-14 Let&amp;rsquo;s Encrypt 发布了 v02 的接口。可以签发泛域名证书了。 我们使用 acme.sh 这个工具来签发。由于目前泛域名证书只能通过DNS来验证域名所有权。所以需要我们有对应域名的DNS记录的修改权限。 安装 acme.sh 的过程其官网写的很详细，略过</description>
     </item>
     
     <item>
       <title>没啥用的 JavaScript 字符串模板</title>
-      <link>http://blog.hxsf.me/post/useless-string-template/</link>
+      <link>https://blog.hxsf.me/post/useless-string-template/</link>
       <pubDate>Tue, 11 Oct 2016 02:11:16 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/useless-string-template/</guid>
+      <guid>https://blog.hxsf.me/post/useless-string-template/</guid>
       <description>最近在做些关于模板引擎的事情，花半小时搞了个简陋版的字符串模板。 追求简便，直接添加到 String.prototype 上了。 How it work String.prototype.format = (function() { // debug_level: [0, 1, 2] =&amp;gt; [&amp;#39;igorne&amp;#39;, &amp;#39;warning&amp;#39;, &amp;#39;error&amp;#39;] var default_option = { l_token: &amp;#39;{{&amp;#39;, r_token: &amp;#39;}}&amp;#39;, debug_level: 1 } var vail = function (raw, key, debug_level) { if (raw === null) {return &amp;#39;&amp;#39;;} if (raw === undefined) { switch (debug_level) { case 2: throw new Error(&amp;#39;the</description>
     </item>
     
     <item>
       <title>记一次反诈骗</title>
-      <link>http://blog.hxsf.me/post/thing-about-anti-invasion/</link>
+      <link>https://blog.hxsf.me/post/thing-about-anti-invasion/</link>
       <pubDate>Sat, 10 Sep 2016 05:33:06 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/thing-about-anti-invasion/</guid>
+      <guid>https://blog.hxsf.me/post/thing-about-anti-invasion/</guid>
       <description>2016-09-10 21:00 家父收到陌生号码的短信，大致内容如下： X(姓氏)家长，你好，为了不使家长错过学校的通知，请及时下载校园网 http://IP/path 逾期自负。 由于该短信破绽百出，家父没有第一时间下载，与我取得联系。 疑点 已外出实习，并不在学</description>
     </item>
     
     <item>
       <title>为何删除的文件可以恢复</title>
-      <link>http://blog.hxsf.me/post/how-disk-store-data/</link>
+      <link>https://blog.hxsf.me/post/how-disk-store-data/</link>
       <pubDate>Sun, 28 Aug 2016 01:45:10 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/how-disk-store-data/</guid>
+      <guid>https://blog.hxsf.me/post/how-disk-store-data/</guid>
       <description>写给不知道的人。 数据是怎么存到我们硬盘上的 文件存储方式 下面介绍下常见的文件存储方式： FAT 和 NTFS。 FAT FAT 把分区卷(Volume)规划为如下几部分 主引导区 —— 文件 分配表#1 —— 文件 分配表#2 —— 根目录 剩下</description>
     </item>
     
     <item>
       <title>python抓取bing壁纸</title>
-      <link>http://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</link>
+      <link>https://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</link>
       <pubDate>Mon, 09 May 2016 22:40:42 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</guid>
+      <guid>https://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</guid>
       <description>bing背景图很不错,一直用别人的bing壁纸获取软件(大部分C#写的)， 但是那些都或多或少不符合自己期望，不是会自动改桌面壁纸就是需要常驻后台，或者保存数量有上限。 然后想用python练个手。 看源码</description>
     </item>
     
     <item>
       <title>自建DNS ——记一次注定坑爹的排错</title>
-      <link>http://blog.hxsf.me/post/create-dns-server/</link>
+      <link>https://blog.hxsf.me/post/create-dns-server/</link>
       <pubDate>Fri, 19 Feb 2016 05:38:32 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/create-dns-server/</guid>
+      <guid>https://blog.hxsf.me/post/create-dns-server/</guid>
       <description>背景： 服务一直用Ubuntu Server(deb包管理) 个人使用OS X 起因 因部分网站在学校内部，如果自己提供DNS服务则可以使内网用户访问内网地址，减小带宽压力。遂决定自己搭建一个DNS服务器。 心血来</description>
     </item>
     
     <item>
       <title>有一种培养叫放手</title>
-      <link>http://blog.hxsf.me/post/you-chong-pei-yang-jiao-fang-shou/</link>
+      <link>https://blog.hxsf.me/post/you-chong-pei-yang-jiao-fang-shou/</link>
       <pubDate>Sat, 21 Nov 2015 06:13:35 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/you-chong-pei-yang-jiao-fang-shou/</guid>
+      <guid>https://blog.hxsf.me/post/you-chong-pei-yang-jiao-fang-shou/</guid>
       <description>有一种培养叫放手 世界上最困难的就是把一件你很拿手的工作交给别人， 再眼睁睁看着他把事情搞砸， 而你却还能心平气和不发一言， 那是培养人。 世界上最容易的就是把一件你很拿手的工作交给别人， 再手把手地教他把事情做</description>
     </item>
     
     <item>
       <title>Linux内核与GNU/Linux发行版</title>
-      <link>http://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</link>
+      <link>https://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</link>
       <pubDate>Sat, 10 Oct 2015 21:46:38 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</guid>
+      <guid>https://blog.hxsf.me/post/linux-kernel-and-linux-distribution/</guid>
       <description>Linux内核与GNU/Linux发行版 ##名词释义 Linux内核 Linux内核（英语：Linux kernel），使用于类Unix操作系统，Linux家族的操作系统内核，以C语言写成，符合POSIX标</description>
     </item>
     
     <item>
       <title>重新敲一遍代码，胜过拷贝粘贴</title>
-      <link>http://blog.hxsf.me/post/dont-copy-paste-retype/</link>
+      <link>https://blog.hxsf.me/post/dont-copy-paste-retype/</link>
       <pubDate>Sat, 10 Oct 2015 18:30:22 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/dont-copy-paste-retype/</guid>
+      <guid>https://blog.hxsf.me/post/dont-copy-paste-retype/</guid>
       <description>原文地址 (original source): http://xion.io/post/programming/dont-copy-paste-retype.html 作者 (author): https://twitter.com/Xion__ 译文： http://www.labazhou.net/2015/10/dont-copy-paste-retype/ 译者： 腊八粥: http://www.labazhou.net/ 如今这个时代，Google 和 Stack Overflow 已经成为了很多开发者不可或缺的工具。但是最近，后者貌似名声坏了。一方面，是因为表面上特别、有时候会偏离适度的原则。说得更中</description>
     </item>
     
     <item>
       <title>比 XcodeGhost 更邪恶的手段 30 年前就出现了</title>
-      <link>http://blog.hxsf.me/post/the-root-password-of-all-evil/</link>
+      <link>https://blog.hxsf.me/post/the-root-password-of-all-evil/</link>
       <pubDate>Sat, 10 Oct 2015 18:18:23 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/the-root-password-of-all-evil/</guid>
+      <guid>https://blog.hxsf.me/post/the-root-password-of-all-evil/</guid>
       <description>最近在开发者圈里讨论最多的莫过于 XcodeGhost。其实在 20 年前，更高明的手段就出现了。 1984 年的时候，UNIX 创造者之一 Ken Thompson 获得了 ACM 图灵奖。他的获奖演讲叫做 Reflections on Trusting Trust（反思对信任的信任）。演讲全</description>
     </item>
     
     <item>
       <title>博客升级</title>
-      <link>http://blog.hxsf.me/post/update-to-v1-0-1/</link>
+      <link>https://blog.hxsf.me/post/update-to-v1-0-1/</link>
       <pubDate>Wed, 07 Oct 2015 02:53:41 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/update-to-v1-0-1/</guid>
+      <guid>https://blog.hxsf.me/post/update-to-v1-0-1/</guid>
       <description>###此次升级内容如下：### 首页增加每篇文章题图显示。 新增首页页脚标注。 整个博客静态内容全部改为中文 增加评论功能 ……</description>
     </item>
     
     <item>
       <title>Gulp VS Grunt 前端工程的构建工具对比</title>
-      <link>http://blog.hxsf.me/post/gulp-vs-grunt/</link>
+      <link>https://blog.hxsf.me/post/gulp-vs-grunt/</link>
       <pubDate>Sun, 20 Sep 2015 08:31:35 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/gulp-vs-grunt/</guid>
+      <guid>https://blog.hxsf.me/post/gulp-vs-grunt/</guid>
       <description>Gulp vs Grunt 前端工程的构建工具对比 Grunt -&amp;gt; Gulp 早些年提到构建工具，难免会让人联想到历史比较悠久的Make，Ant，以及后来为了更方便的构建结构类似的Java项目而出现的Maven。Node催生了一批自动化工具，像</description>
     </item>
     
     <item>
       <title>浏览器内核简介</title>
-      <link>http://blog.hxsf.me/post/browsers-introduction/</link>
+      <link>https://blog.hxsf.me/post/browsers-introduction/</link>
       <pubDate>Tue, 28 Jul 2015 05:14:20 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/browsers-introduction/</guid>
+      <guid>https://blog.hxsf.me/post/browsers-introduction/</guid>
       <description>今天我们来聊聊常见的浏览器内核: Trident Geoko Presto WebKit Blink</description>
     </item>
     
     <item>
       <title>Make 命令简介</title>
-      <link>http://blog.hxsf.me/post/make-ming-ling-jian-jie/</link>
+      <link>https://blog.hxsf.me/post/make-ming-ling-jian-jie/</link>
       <pubDate>Thu, 19 Mar 2015 04:50:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/make-ming-ling-jian-jie/</guid>
+      <guid>https://blog.hxsf.me/post/make-ming-ling-jian-jie/</guid>
       <description>代码变成可执行文件，叫做编译（compile）；先编译这个，还是先编译那个（即编译的安排），叫做构建（build）。 Make是最常用的构建工具，诞生于1977年，主要用于C语言的项目。但是实际上 ，任何</description>
     </item>
     
     <item>
       <title>标题栏显示时钟 - js书签工具</title>
-      <link>http://blog.hxsf.me/post/web-clock-jstools/</link>
+      <link>https://blog.hxsf.me/post/web-clock-jstools/</link>
       <pubDate>Tue, 24 Feb 2015 19:52:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/web-clock-jstools/</guid>
+      <guid>https://blog.hxsf.me/post/web-clock-jstools/</guid>
       <description>早上看到的，微博回复没办法贴代码，所以贴在这。 使用很简单，浏览器书签/收藏 新建一个，名字随意，网址填如下代码。 功能很简单，点击上一步添加的书签，当前网页的标题就会变身时钟。 需求地址(新浪微博@小众软件</description>
     </item>
     
     <item>
       <title>安装并配置GitLab手记</title>
-      <link>http://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</link>
+      <link>https://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</link>
       <pubDate>Thu, 19 Feb 2015 04:19:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</guid>
+      <guid>https://blog.hxsf.me/post/an-zhuang-bing-pei-zhi-gitlabshou-ji/</guid>
       <description>照着官方的下载页面 https://about.gitlab.com/downloads/ 1-2步安装好GitLab 7.7.2 ，第三步里写的内容是使用一键配置来初始化GitLab 如果单纯的裸机(没有安装任何的服务器数据库之类的||防止端口占用)里只想安装GitLab那么没有任何</description>
     </item>
     
     <item>
       <title>PHP调用外部可执行文件的几种方法的差异</title>
-      <link>http://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</link>
+      <link>https://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</link>
       <pubDate>Thu, 12 Feb 2015 05:09:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</guid>
+      <guid>https://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</guid>
       <description>&lt;p&gt;PHP 要调用 Shell 执行程式的时候, 偷懒有 &lt;code&gt;ls&lt;/code&gt; 可以使用, 不过, 正规点可以使用 system()、exec()、shell_exec()、passthru()这四个 Function 来操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>事件绑定和事件委托 (以 jQuery 为例)</title>
-      <link>http://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</link>
+      <link>https://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</link>
       <pubDate>Fri, 30 Jan 2015 21:38:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</guid>
+      <guid>https://blog.hxsf.me/post/shi-jian-bang-ding-he-shi-jian-wei-tuo-yi-jquery-wei-li-2/</guid>
       <description>随着DOM结构的复杂化和Ajax等动态脚本技术的运用，事件委托自然浮出了水面。jQuery为绑定和委托事件提供了 .bind() 、.live() 和 .delegate() 方法。本文在讨论这几个方法内部实现的基础上，展示它们的优劣势及适用</description>
     </item>
     
     <item>
       <title>C&#43;&#43;指针的概念解读</title>
-      <link>http://blog.hxsf.me/post/c-zhi-zhen-de-gai-nian-jie-du/</link>
+      <link>https://blog.hxsf.me/post/c-zhi-zhen-de-gai-nian-jie-du/</link>
       <pubDate>Wed, 28 Jan 2015 23:25:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/c-zhi-zhen-de-gai-nian-jie-du/</guid>
+      <guid>https://blog.hxsf.me/post/c-zhi-zhen-de-gai-nian-jie-du/</guid>
       <description>指针是一个特殊的变量，它里面存储的数值被解释成为内存里的一个地址。要搞清一个指针需要搞清指针的四方面的内容：指针的类型，指针所指向的类型，指针的值或者叫指针所指向的内存区，还有指针本身所占据的内存区。</description>
     </item>
     
     <item>
       <title>First Post</title>
-      <link>http://blog.hxsf.me/post/welcome-to-ghost/</link>
+      <link>https://blog.hxsf.me/post/welcome-to-ghost/</link>
       <pubDate>Thu, 24 Jul 2014 17:55:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/welcome-to-ghost/</guid>
+      <guid>https://blog.hxsf.me/post/welcome-to-ghost/</guid>
       <description>第一篇博文一定要写好。 酝酿了半天，开始正文： Hello World !!! 2015-07-28 by:呼啸随风</description>
     </item>
     

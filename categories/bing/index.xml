@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bing on Who am I</title>
-    <link>http://blog.hxsf.me/categories/bing/</link>
+    <link>https://blog.hxsf.me/categories/bing/</link>
     <description>Recent content in bing on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 09 May 2016 22:40:42 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/categories/bing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/categories/bing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>python抓取bing壁纸</title>
-      <link>http://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</link>
+      <link>https://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</link>
       <pubDate>Mon, 09 May 2016 22:40:42 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</guid>
+      <guid>https://blog.hxsf.me/post/pythonzhua-qu-bingbi-zhi/</guid>
       <description>bing背景图很不错,一直用别人的bing壁纸获取软件(大部分C#写的)， 但是那些都或多或少不符合自己期望，不是会自动改桌面壁纸就是需要常驻后台，或者保存数量有上限。 然后想用python练个手。 看源码</description>
     </item>
     

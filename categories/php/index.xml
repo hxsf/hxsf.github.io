@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on Who am I</title>
-    <link>http://blog.hxsf.me/categories/php/</link>
+    <link>https://blog.hxsf.me/categories/php/</link>
     <description>Recent content in php on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 12 Feb 2015 05:09:00 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/categories/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PHP调用外部可执行文件的几种方法的差异</title>
-      <link>http://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</link>
+      <link>https://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</link>
       <pubDate>Thu, 12 Feb 2015 05:09:00 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</guid>
+      <guid>https://blog.hxsf.me/post/phpdiao-yong-wai-bu-ke-zhi-xing-wen-jian-de-ji-chong-fang-fa-de-chai-yi/</guid>
       <description>&lt;p&gt;PHP 要调用 Shell 执行程式的时候, 偷懒有 &lt;code&gt;ls&lt;/code&gt; 可以使用, 不过, 正规点可以使用 system()、exec()、shell_exec()、passthru()这四个 Function 来操作。&lt;/p&gt;</description>
     </item>
     

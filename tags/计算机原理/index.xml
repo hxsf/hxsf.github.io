@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算机原理 on Who am I</title>
-    <link>http://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
+    <link>https://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
     <description>Recent content in 计算机原理 on Who am I</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 28 Aug 2016 01:45:10 +0000</lastBuildDate>
     
-	<atom:link href="http://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.hxsf.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>为何删除的文件可以恢复</title>
-      <link>http://blog.hxsf.me/post/how-disk-store-data/</link>
+      <link>https://blog.hxsf.me/post/how-disk-store-data/</link>
       <pubDate>Sun, 28 Aug 2016 01:45:10 +0000</pubDate>
       
-      <guid>http://blog.hxsf.me/post/how-disk-store-data/</guid>
+      <guid>https://blog.hxsf.me/post/how-disk-store-data/</guid>
       <description>写给不知道的人。 数据是怎么存到我们硬盘上的 文件存储方式 下面介绍下常见的文件存储方式： FAT 和 NTFS。 FAT FAT 把分区卷(Volume)规划为如下几部分 主引导区 —— 文件 分配表#1 —— 文件 分配表#2 —— 根目录 剩下</description>
     </item>
     
